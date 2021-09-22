@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\NotasController;
+use App\Http\Controllers\NotasPruebaSaberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +20,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
+
+Route::resource('user',UserController::class);
+Route::resource('student',StudentController::class);
+Route::resource('teacher',TeacherController::class);
+Route::resource('subject',SubjectController::class);
+Route::resource('notas',NotasController::class);
+Route::resource('notas-pruebas-saber',NotasPruebaSaberController::class);
