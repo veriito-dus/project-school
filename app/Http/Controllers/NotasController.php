@@ -14,7 +14,7 @@ class NotasController extends Controller
      */
     public function index()
     {
-        //
+        return 'Si guenas aca desde el index de las notas Controlador';
     }
 
     /**
