@@ -15,6 +15,7 @@
       <div class="left">
         <form action="">
           <h1>Inicia Sesión</h1>
+          <p>hollis</p>
           <div class="information">
           <i class="fas fa-user"> Usuario</i>
             <input type="text" placeholder="Digite su Usuario" required="" id="Cuenta" />
