@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TeacherModel;
+use App\Models\TeacherGradeModel;
 use Illuminate\Http\Request;
 
-class TeacherController extends Controller
+class TeacherGradeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return view('teacher/index');
+        return view('teacher/teacher-grade/index');
     }
 
     /**
@@ -41,10 +41,10 @@ class TeacherController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TeacherModel  $teacherModel
+     * @param  \App\Models\TeacherGradeModel  $teacherGradeModel
      * @return \Illuminate\Http\Response
      */
-    public function show(TeacherModel $teacherModel)
+    public function show(TeacherGradeModel $teacherGradeModel)
     {
         //
     }
@@ -52,10 +52,10 @@ class TeacherController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TeacherModel  $teacherModel
+     * @param  \App\Models\TeacherGradeModel  $teacherGradeModel
      * @return \Illuminate\Http\Response
      */
-    public function edit(TeacherModel $teacherModel)
+    public function edit(TeacherGradeModel $teacherGradeModel)
     {
         //
     }
@@ -64,10 +64,10 @@ class TeacherController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TeacherModel  $teacherModel
+     * @param  \App\Models\TeacherGradeModel  $teacherGradeModel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TeacherModel $teacherModel)
+    public function update(Request $request, TeacherGradeModel $teacherGradeModel)
     {
         //
     }
@@ -75,10 +75,10 @@ class TeacherController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TeacherModel  $teacherModel
+     * @param  \App\Models\TeacherGradeModel  $teacherGradeModel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TeacherModel $teacherModel)
+    public function destroy(TeacherGradeModel $teacherGradeModel)
     {
         //
     }

@@ -2,9 +2,9 @@
 
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <title>Educas</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="css/img/icono.ico" />
+  <title>Profesor</title>
+  <link rel="stylesheet" href="css/login.css" />
+  <link rel="icon" href="img/icono.ico" />
   <script src="https://kit.fontawesome.com/6f70aed298.js" crossorigin="anonymous"></script>
 </head>
 
@@ -15,7 +15,6 @@
       <div class="left">
         <form action="">
           <h1>Inicia Sesión</h1>
-          <p>hollis</p>
           <div class="information">
           <i class="fas fa-user"> Usuario</i>
             <input type="text" placeholder="Digite su Usuario" required="" id="Cuenta" />
