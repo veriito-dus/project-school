@@ -23,7 +23,7 @@
 
           <div class="col-lg-4 admin_box_col">
             <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/notesdirector')}}">
-              <i class="fas fa-tasks"></i>
+              <i class="fas fa-file-signature"></i>
               <div class="admin_box_content">
                 <h2 class="admin_box_title">ASIGNACION ALUMNO GRADO</h2>
                 <!-- <a href="courses.html" class="admin_box_link">view more</a> -->
@@ -33,7 +33,7 @@
 
           <div class="col-lg-4 admin_box_col">
             <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/notesaberdirector')}}">
-              <i class="fas fa-tasks"></i>
+              <i class="fas fa-file-signature"></i>
               <div class="admin_box_content">
                 <h2 class="admin_box_title">ASIGNACION DOCENTE MATERIA GRADO</h2>
                 <!-- <a href="courses.html" class="admin_box_link">view more</a> -->
@@ -43,7 +43,7 @@
 
           <div class="col-lg-4 admin_box_col">
             <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/notesaberdirector')}}">
-              <i class="fas fa-tasks"></i>
+              <i class="fas fa-chalkboard-teacher"></i>
               <div class="admin_box_content">
                 <h2 class="admin_box_title">GRADOS</h2>
                 <!-- <a href="courses.html" class="admin_box_link">view more</a> -->
@@ -54,7 +54,7 @@
         <div class="row" id="row1admin">
           <div class="col-lg-4 admin_box_col">
             <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/notesabergrade')}}">
-              <i class="fas fa-chart-pie"></i>
+              <i class="fas fa-book"></i>
               <div class="admin_box_content">
                 <h2 class="admin_box_title">MATERIAS</h2>
                 <!-- <a href="courses.html" class="admin_box_link">view more</a> -->
@@ -64,7 +64,7 @@
 
           <div class="col-lg-4 admin_box_col">
             <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/notesgrade')}}">
-              <i class="fab fa-leanpub"></i>
+              <i class="fas fa-user-friends"></i>
               <div class="admin_box_content">
                 <h2 class="admin_box_title">ALUMNOS</h2>
                 <!-- <a href="courses.html" class="admin_box_link">view more</a> -->
@@ -74,7 +74,7 @@
 
           <div class="col-lg-4 admin_box_col">
             <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/notesgrade')}}">
-              <i class="fab fa-leanpub"></i>
+              <i class="fas fa-user-tie"></i>
               <div class="admin_box_content">
                 <h2 class="admin_box_title">DOCENTES</h2>
                 <!-- <a href="courses.html" class="admin_box_link">view more</a> -->
@@ -85,4 +85,5 @@
       </div>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
