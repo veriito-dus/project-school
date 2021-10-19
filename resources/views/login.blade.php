@@ -16,11 +16,11 @@
         <form action="">
           <h1>Inicia Sesión</h1>
           <div class="information">
-          <i class="fas fa-user"> Usuario</i>
+            <i class="fas fa-user"> Usuario</i>
             <input type="text" placeholder="Digite su Usuario" required="" id="Cuenta" />
           </div>
           <div class="information">
-          <i class="fas fa-unlock-alt"> Contraseña</i>
+            <i class="fas fa-unlock-alt"> Contraseña</i>
             <input type="password" placeholder="Digite su Contraseña" required="" id="Contraseña" />
           </div>
           <div>

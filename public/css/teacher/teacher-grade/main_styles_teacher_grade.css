@@ -56,7 +56,7 @@
 	height: 0px;
 	z-index: 9;
 	padding-top: 0px;
-	top: -250px;
+	top: -400px;
 
 }
 .hero_boxes_inner
@@ -77,6 +77,10 @@
 .hero_box:hover
 {
 	background: #26A0DA;
+}
+.hero_boxes_inner #row1
+{
+	margin-top: 5%;
 }
 .hero_box i
 {
