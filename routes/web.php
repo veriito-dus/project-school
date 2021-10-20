@@ -75,8 +75,8 @@ Route::get('/notesaberdirector', function () {
 Route::get('/administrador', function () {
     return view('admin/index');
 });
-Route::get('/modal', function () {
-    return view('modal');
+Route::get('/asignacionag', function () {
+    return view('admin/asignacion-a-g');
 });
 
 
