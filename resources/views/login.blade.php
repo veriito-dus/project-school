@@ -9,6 +9,8 @@
 </head>
 
 <body>
+<h1 style="text-align: center; margin-top:10px">BIENVENIDOS</h1>
+
   <div class="container">
     <section id="content">
       <!-- <div id="login-box"> -->

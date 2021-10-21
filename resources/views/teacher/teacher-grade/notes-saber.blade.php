@@ -1,3 +1,4 @@
+<head><link rel="icon" href="img/icono.ico" /></head>
 <body style="background-image:url(img/fondo_n.jpg)">
 @extends('navs.teacher-grade')
   <div class="home">

@@ -1,3 +1,4 @@
+<head><link rel="icon" href="img/icono.ico" /></head>
 <body>
   @extends('navs.teacher-grade')
   <div class="home">
