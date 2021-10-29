@@ -4,17 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\UserModel;
 use Illuminate\Http\Request;
-
+/**
+* controlador usuarios
+* muestra los procesos que se realizara en la parte de usuario(login)
+* 
+* @author    Veronica Lisseth Dussan Parra
+* @since     22 de septiembre del 2020
+*/
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * muestra la pagina del login donde se ingresaran cuenta y contraseña
+    */
     public function index()
     {
-        //
+        return view('login');
     }
 
     /**

@@ -31,9 +31,6 @@ Route::get('/', function () {
 Route::get('/profile', function () {
     return view('teacher/profile');
 });
-Route::get('/index-teacher', function () {
-    return view('teacher/index');
-});
 Route::get('/notes', function () {
     return view('teacher/notes');
 });

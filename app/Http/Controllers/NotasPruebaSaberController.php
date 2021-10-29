@@ -4,17 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\NotasPruebaSaberModel;
 use Illuminate\Http\Request;
-
+    /**
+     * controlador pruebas saber
+     * muestra los procesos que se realizaran para las notas de las pruebas saber
+     * 
+     * @author    Veronica Lisseth Dussan Parra
+     * @since     22 de septiembre del 2020
+     */
 class NotasPruebaSaberController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * muestra la vista de las notas de las notas de las pruebas saber
      */
     public function index()
     {
-        //
+        return view('teacher/notes-saber');
     }
 
     /**

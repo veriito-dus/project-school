@@ -9,11 +9,8 @@
 </head>
 
 <body>
-<h1 style="text-align: center; margin-top:10px">BIENVENIDOS</h1>
-
   <div class="container">
     <section id="content">
-      <!-- <div id="login-box"> -->
       <div class="left">
         <form action="">
           <h1>Inicia Sesión</h1>
@@ -32,13 +29,12 @@
             <a href="#">Lost your password?</a>
             <a href="#">Register</a>
             </div> -->
-        </form><!-- form -->
+        </form>
       </div>
       <div class="right">
       </div>
-      <!-- </div> -->
-    </section><!-- content -->
-  </div><!-- container -->
+    </section>
+  </div>
 </body>
 
 </html>

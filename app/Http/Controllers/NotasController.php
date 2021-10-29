@@ -5,16 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\NotasModel;
 use Illuminate\Http\Request;
 
+/**
+* vista notas
+* control los procesos que se realizaran de las notas de los estudiantes por periodo
+* 
+* @author    Veronica Lisseth Dussan Parra
+* @since     22 de septiembre del 2020
+*/
 class NotasController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * muestra la vista de las notas de los estudiantes
      */
     public function index()
     {
-        return 'Si guenas aca desde el index de las notas Controlador';
+        return view('teacher/notes');
     }
 
     /**

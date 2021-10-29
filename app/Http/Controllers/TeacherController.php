@@ -4,18 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\TeacherModel;
 use Illuminate\Http\Request;
-
+/**
+* controlador profesores
+* muestra los procesos que se realizaran para los profesores
+* 
+* @author    Veronica Lisseth Dussan Parra
+* @since     22 de septiembre del 2020
+*/
 class TeacherController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * muestra la pagina principal de los profesores
      */
     public function index()
     {
         return view('teacher/index');
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -81,5 +86,9 @@ class TeacherController extends Controller
     public function destroy(TeacherModel $teacherModel)
     {
         //
+    }
+    public function profile()
+    {
+        return view('teacher/profile');
     }
 }
