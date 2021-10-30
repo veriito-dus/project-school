@@ -106,18 +106,7 @@ tr:nth-child(even) {
 #notas{
   width: 80px;
 }
-.agregar{
-	/* border-radius: 25px; */
-  padding: 10px;
-  text-decoration: none;
-  font-size: 15px;
-  background: #26A0DA;
-	border-radius: 30px;
-	cursor: pointer;
-  border:none;
-  margin-top: 70%;
-  color: rgb(255, 255, 255);
-}
+
 .modificar{
 	border-radius: 10px;
   padding-left: 10px;

@@ -1,4 +1,7 @@
-<head><link rel="icon" href="img/icono.ico" /></head>
+<head>
+  <link rel="icon" href="img/icono.ico" />
+</head>
+
 <body style="background-image:url(img/fondo_n.jpg)">
   @extends('navs.admin')
   <div class="home">
@@ -40,7 +43,32 @@
 
                   <div class="col-lg-2 adminag_box_col">
                     <div class="adminag_filtro" style="margin-top: 35px;">
-                      <a type="submit" class="agregar" href="{{url('/teacher')}}">Agregar</a>
+                      <!-- <a type="submit" class="agregar" href="{{url('/teacher')}}">Agregar</a> -->
+
+                      <!-- aca empieza el modal  -->
+                      <!-- Button trigger modal -->
+                      <button type="button" class="agagregar" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Agregar
+                      </button>
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Asignación Alumno - Grado</h5>
+                            </div>
+                            <div class="modal-body">
+                              Desea asignar a " " al grado " "
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                              <button type="button" class="btn btn-primary">Aceptar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- aca termina el modal  -->
                     </div>
                   </div>
                 </div>
@@ -84,3 +112,24 @@
     </div>
   </div>
 </body>
+<style>
+  .agagregar{
+	/* border-radius: 25px; */
+  padding: 10px;
+  text-decoration: none;
+  font-size: 15px;
+  background: #26A0DA;
+	border-radius: 30px;
+	cursor: pointer;
+  border:none;
+  width: 70%;
+  color: rgb(255, 255, 255);
+}
+.modal-title{
+  color: green;
+}
+.modal-body{
+  font-size: 15px;
+  color: #000;
+}
+</style>

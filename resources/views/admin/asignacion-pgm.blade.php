@@ -56,8 +56,32 @@
                   </div>
 
                   <div class="col-lg-2 adminpgm_box_col">
-                    <div class="adminpgm_filtro" style="margin-top: 35px;margin-left:100%">
-                      <a type="submit" class="agregarpgm" href="{{url('/teacher')}}">Agregar</a>
+                    <div class="adminpgm_filtro" style="margin-top: 30px;margin-left:100%">
+                      <!-- <a type="submit" class="agregarpgm" href="{{url('/teacher')}}">Agregar</a> -->
+                      <!-- aca empieza el modal  -->
+                      <!-- Button trigger modal -->
+                      <button type="button" class="agregarpgm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Agregar
+                      </button>
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Asignación Profesor - Grado - Materia</h5>
+                            </div>
+                            <div class="modal-body">
+                              Desea asignar a " " el grado " " y la materia " "
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                              <button type="button" class="btn btn-primary">Aceptar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- aca termina el modal  -->
                     </div>
                   </div>
                 </div>
@@ -104,3 +128,23 @@
     </div>
   </div>
 </body>
+<style>
+.agregarpgm{
+	/* border-radius: 25px; */
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  font-size: 15px;
+  background: #26A0DA;
+	border-radius: 30px;
+	cursor: pointer;
+  border:none;
+  color: rgb(255, 255, 255);
+}
+.modal-title{
+  color: green;
+}
+.modal-body{
+  font-size: 15px;
+  color: #000;
+}
+</style>
