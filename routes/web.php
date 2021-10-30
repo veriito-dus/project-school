@@ -73,7 +73,28 @@ Route::get('/administrador', function () {
     return view('admin/index');
 });
 Route::get('/asignacionag', function () {
-    return view('admin/asignacion-a-g');
+    return view('admin/asignacion-ag');
+});
+Route::get('/asignacionpgm', function () {
+    return view('admin/asignacion-pgm');
+});
+Route::get('/gradosadmin', function () {
+    return view('admin/grades-admin');
+});
+Route::get('/materiaadmin', function () {
+    return view('admin/materia-admin');
+});
+Route::get('/alumnoadmin', function () {
+    return view('admin/alumnos/alumnos-admin');
+});
+Route::get('/addalumnoadmin', function () {
+    return view('admin/alumnos/add');
+});
+Route::get('/teacheradmin', function () {
+    return view('admin/teachers/teacher-admin');
+});
+Route::get('/addteacheradmin', function () {
+    return view('admin/teachers/add');
 });
 
 

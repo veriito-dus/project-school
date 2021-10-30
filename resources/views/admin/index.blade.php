@@ -33,7 +33,7 @@
           </div>
 
           <div class="col-lg-4 admin_box_col">
-            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/notesaberdirector')}}">
+            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/asignacionpgm')}}">
               <i class="fas fa-file-signature"></i>
               <div class="admin_box_content">
                 <h2 class="admin_box_title">ASIGNACION DOCENTE MATERIA GRADO</h2>
@@ -43,7 +43,7 @@
           </div>
 
           <div class="col-lg-4 admin_box_col">
-            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/notesaberdirector')}}">
+            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/gradosadmin')}}">
               <i class="fas fa-chalkboard-teacher"></i>
               <div class="admin_box_content">
                 <h2 class="admin_box_title">GRADOS</h2>
@@ -54,7 +54,7 @@
         </div>
         <div class="row" id="row1admin">
           <div class="col-lg-4 admin_box_col">
-            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/notesabergrade')}}">
+            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/materiaadmin')}}">
               <i class="fas fa-book"></i>
               <div class="admin_box_content">
                 <h2 class="admin_box_title">MATERIAS</h2>
@@ -64,7 +64,7 @@
           </div>
 
           <div class="col-lg-4 admin_box_col">
-            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/notesgrade')}}">
+            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/alumnoadmin')}}">
               <i class="fas fa-user-friends"></i>
               <div class="admin_box_content">
                 <h2 class="admin_box_title">ALUMNOS</h2>
@@ -74,7 +74,7 @@
           </div>
 
           <div class="col-lg-4 admin_box_col">
-            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/notesgrade')}}">
+            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/teacheradmin')}}">
               <i class="fas fa-user-tie"></i>
               <div class="admin_box_content">
                 <h2 class="admin_box_title">DOCENTES</h2>

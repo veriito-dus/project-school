@@ -1,18 +1,18 @@
 /*********************************
-5.1 notes Slider
+5.1 alumnosadmin Slider
 *********************************/
 
-.notes_slider_container
+.alumnosadmin_slider_container
 {
 	width: 100%;
 	height: 100%;
 }
-.notes_slide
+.alumnosadmin_slide
 {
 	width: 100%;
 	height: 100%;
 }
-.notes_slide_background
+.alumnosadmin_slide_background
 {
 	position: absolute;
 	top: 0;
@@ -23,7 +23,7 @@
 	background-size: cover;
 	background-position: center center;
 }
-.notes_slide_container
+.alumnosadmin_slide_container
 {
 	width: 90%;
 	height: auto;
@@ -33,47 +33,29 @@
   border-radius: 30px;
   text-align: center;
 }
-#text-notes
+#text-alumnosadmin
 {
   color: rgb(0, 0, 0);
   padding-top: 25px;
 }
-.notes_filtro input{
+.alumnosadmin_filtro input{
   width: 70%;
   height: 25px;
   text-align: center;
   border:none;
 }
-.save-note input[type="submit"]{
-	background: red;
-	border-radius: 30px;
-	cursor: pointer;
-	width: 100px;
-	height: 30px;
-  border:none;
-  margin-top: 70%;
-  margin-left: -80px;
-}
-.cancel input[type="submit"]{
-	background: #26A0DA;
-	border-radius: 30px;
-	cursor: pointer;
-	width: 100px;
-	height: 30px;
-  border:none;
-  margin-top: 70%;
-}
-.notes_filtro{
+
+.alumnosadmin_filtro{
   margin-top:15px;
 }
-.notes_box_title{
+.alumnosadmin_box_title{
   color: rgb(0, 0, 0);
   font-size: 18px;
 }
-.tables-notes{
+.tables-alumnosadmin{
   background-color:rgb(255, 255, 255);
   border-radius: 20px;
-  width: 98%;
+  width: 90%;
   margin: 0 auto;
   margin-top: 20px;
   box-shadow: 2px 0 3px rgba(0, 0, 0, 0.678) ;
@@ -92,7 +74,21 @@ select {
 select:hover {
   border:1.5px solid #26A0DA;
 }
-.diseño-table-notes{
+#materia{
+  background:white;
+  width: 70%;
+  height: 25px;
+  text-align: center;
+  border-radius: 4px;
+  outline: none;
+  color: rgb(109, 109, 109);
+  border: none;
+}
+#materia:hover{
+  border:1.5px solid #26A0DA;
+
+}
+.diseño-table-alumnosadmin{
   width:95%;
   margin:0 auto;
   padding-top:20px;
@@ -108,10 +104,10 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
   border-bottom: 1px solid #dfdfdf;
 }
-.diseño-table-notes table td{
+.diseño-table-alumnosadmin table td{
   text-align: center;
 }
-.diseño-table-notes table td input{
+.diseño-table-alumnosadmin table td input{
   width: 30px;
   border: none;
   border-left: 1px solid #dfdfdf;
@@ -123,4 +119,35 @@ tr:nth-child(even) {
 }
 #notas{
   width: 80px;
+}
+.agregaralumno{
+	/* border-radius: 25px; */
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  font-size: 15px;
+  background: #26A0DA;
+	border-radius: 10px;
+	cursor: pointer;
+  border:none;
+  color: rgb(255, 255, 255);
+}
+.modificar{
+	border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+  background: #26DA5B;
+	cursor: pointer;
+  border:none;
+  color: rgb(0, 0, 0);
+}
+.eliminar{
+	border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+  background: red;
+	cursor: pointer;
+  border:none;
+  color: rgb(255, 255, 255);
 }
