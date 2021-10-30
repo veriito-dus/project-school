@@ -23,7 +23,7 @@
             <input type="password" placeholder="Digite su Contraseña" required="" id="Contraseña" />
           </div>
           <div class="containeragregar">
-            <a type="submit" class="agregar" href="{{url('/teacher')}}">Ingresar</a>
+            <a type="submit" class="agregar" href="{{route('teacher.index')}}">Ingresar</a>
           </div>
           <!-- <div>
             <a href="#">Lost your password?</a>

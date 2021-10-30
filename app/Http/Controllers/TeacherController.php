@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 * muestra los procesos que se realizaran para los profesores
 * 
 * @author    Veronica Lisseth Dussan Parra
-* @since     22 de septiembre del 2020
+* @since     22 de septiembre del 2021
 */
 class TeacherController extends Controller
 {
@@ -19,6 +19,10 @@ class TeacherController extends Controller
     public function index()
     {
         return view('teacher/index');
+    }
+    public function perfil()
+    {
+        return view('teacher/profile');
     }
 
 
@@ -87,8 +91,5 @@ class TeacherController extends Controller
     {
         //
     }
-    public function profile()
-    {
-        return view('teacher/profile');
-    }
+
 }
