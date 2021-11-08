@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SubjectModel;
+use App\Models\Materia;
 use Illuminate\Http\Request;
 
-class SubjectController extends Controller
+class MateriaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,13 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        //
+        //        // $grados=Grade::all();
+        // return view('prueba.prueba',$datos);
+        // return view('admin.grades-admin',compact('grados'));
+        // return view('prueba.prueba',compact('grados'));
+        // $materias=SubjectModel::all();
+        // return view('admin.materia-admin',Compact('materia'));
+        // return view('prueba.prueba',Compact('materias'));
     }
 
     /**
@@ -41,10 +47,10 @@ class SubjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SubjectModel  $subjectModel
+     * @param  \App\Models\Materia  $materia
      * @return \Illuminate\Http\Response
      */
-    public function show(SubjectModel $subjectModel)
+    public function show(Materia $materia)
     {
         //
     }
@@ -52,10 +58,10 @@ class SubjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SubjectModel  $subjectModel
+     * @param  \App\Models\Materia  $materia
      * @return \Illuminate\Http\Response
      */
-    public function edit(SubjectModel $subjectModel)
+    public function edit(Materia $materia)
     {
         //
     }
@@ -64,10 +70,10 @@ class SubjectController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SubjectModel  $subjectModel
+     * @param  \App\Models\Materia  $materia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SubjectModel $subjectModel)
+    public function update(Request $request, Materia $materia)
     {
         //
     }
@@ -75,10 +81,10 @@ class SubjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SubjectModel  $subjectModel
+     * @param  \App\Models\Materia  $materia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SubjectModel $subjectModel)
+    public function destroy(Materia $materia)
     {
         //
     }

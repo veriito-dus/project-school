@@ -8,6 +8,7 @@ use App\Http\Controllers\TeacherGradeController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\NotasController;
 use App\Http\Controllers\NotasPruebaSaberController;
+use App\Http\Controllers\GradeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,9 +79,9 @@ Route::get('/asignacionag', function () {
 Route::get('/asignacionpgm', function () {
     return view('admin/asignacion-pgm');
 });
-Route::get('/gradosadmin', function () {
-    return view('admin/grades-admin');
-});
+// Route::get('/gradosadmin', function () {
+//     return view('admin/grades-admin');
+// });
 Route::get('/materiaadmin', function () {
     return view('admin/materia-admin');
 });
@@ -97,7 +98,9 @@ Route::get('/addteacheradmin', function () {
     return view('admin/teachers/add');
 });
 
-
+Route::get('/prueba', function () {
+    return view('prueba/prueba');
+});
 
 
 Route::resource('user',UserController::class);
@@ -107,3 +110,4 @@ Route::resource('teachergrade',TeacherGradeController::class);
 Route::resource('subject',SubjectController::class);
 Route::resource('notas',NotasController::class);
 Route::resource('notas-pruebas-saber',NotasPruebaSaberController::class);
+Route::resource('grado',GradeController::class); //listo

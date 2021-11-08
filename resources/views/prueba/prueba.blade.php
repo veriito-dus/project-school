@@ -11,23 +11,28 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
-  <title>Grados</title>
+  <title>Materias</title>
 </head>
 
 <body style="background-image:url(img/fondo_n.jpg)">
   @extends('navs.admin')
   <div class="containerTablaFiltro align-items-center justify-content-center">
-    <h1 class="tituloGrado">GRADOS</h1>
-    <form action="{{url('/grado')}}" method="post" style="text-align:center">
-      @csrf
-      <div class="row" style="width:70%;margin:auto">
-        <div class="col-lg-5 offset-md-2">
+    <h1 class="tituloGrado">Materias</h1>
+    <form action="" method="post" style="text-align:center;background-color: red;">
+      <div class="row" style="width:80%;margin:auto;background-color: pink;">
+        <div class="col-lg-5">
           <div class="filtro">
-            <h2 class="title_filtro">Grado</h2>
-            <input type="text" placeholder="Digite el Grado" name="Grade" id="Grade" />
+            <h2 class="title_filtro">Nombre Materia</h2>
+            <input type="text" placeholder="Digite la materia" name="Grade" id="Grade" />
           </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-5">
+          <div class="filtro">
+            <h2 class="title_filtro">Horas Materia</h2>
+            <input type="number" placeholder="Digite las horas" name="Grade" id="Grade" />
+          </div>
+        </div>
+        <div class="col-lg-2">
           <div class="filtroBoton">
             <input type="submit" value="Agregar">
           </div>
@@ -36,23 +41,25 @@
     </form>
     <div class="tablaGrado">
       <div class="diseñoTablaGrado">
-        <table class="table" id="prueba" >
+        <table class="table" id="prueba">
           <thead>
             <tr class="principal">
-              <th>Grado</th>
+              <th>Materia</th>
+              <th>Horas</th>
+              <th>Modificar</th>
               <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
-            @foreach($grados as $grade)
+            @foreach($materias as $materia)
             <tr>
-              <td>{{ $grade->Grade }}</td>
+              <td>{{ $materia->Name }}</td>
+              <td>{{ $materia->Hours }}</td>
+              <td>Modificar</td>
               <td>
-                <form action="{{url('/grado/'.$grade->id)}}" method="post">
-                  @csrf
-                  {{method_field('DELETE')}}
+                <form action="" method="post">
                   <!-- <input type="submit" onclick="return confirm('¿seguro de borrarlo?')" value="Eliminar"> -->
-                  <input type="submit" class="botonEliminar" onclick="return confirm('¿Desea borrar el grado {{ $grade->Grade }} ?')" value="Eliminar">
+                  <input type="submit" class="botonEliminar" onclick="return confirm('¿Desea borrar?')" value="Eliminar">
                 </form>
               </td>
             </tr>
@@ -110,6 +117,7 @@
     color: rgb(109, 109, 109);
     border: none;
   }
+
   .filtro input:hover {
     border: 1.5px solid #26A0DA;
 
@@ -120,6 +128,7 @@
     border: 1.5px solid #26A0DA;
     color: black;
   }
+
   .filtroBoton input {
     background: #26A0DA;
     border-radius: 30px;
@@ -152,6 +161,4 @@
     top: 170px;
     padding-bottom: 35px;
   }
-
-
 </style>

@@ -43,7 +43,7 @@
           </div>
 
           <div class="col-lg-4 admin_box_col">
-            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/gradosadmin')}}">
+            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/grado')}}">
               <i class="fas fa-chalkboard-teacher"></i>
               <div class="admin_box_content">
                 <h2 class="admin_box_title">GRADOS</h2>
