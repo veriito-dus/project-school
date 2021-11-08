@@ -5,87 +5,65 @@ namespace App\Http\Controllers;
 use App\Models\Materia;
 use Illuminate\Http\Request;
 
+/**
+ * Controlador Materias
+ * Procesos que se realizaran sobre las materias que se dictan en la institucion
+ * 
+ * @author    Veronica Lisseth Dussan Parra
+ * @since     29 de septiembre del 2021
+ */
 class MateriaController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Enlista las materias que se tiene en la base de datos y los muestra en la vista materia-admin
      */
     public function index()
     {
-        //        // $grados=Grade::all();
-        // return view('prueba.prueba',$datos);
-        // return view('admin.grades-admin',compact('grados'));
-        // return view('prueba.prueba',compact('grados'));
-        // $materias=SubjectModel::all();
-        // return view('admin.materia-admin',Compact('materia'));
-        // return view('prueba.prueba',Compact('materias'));
+        $materias = Materia::all();
+        return view('admin.materia-admin', Compact('materias'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Agrega los datos que vienen de la vista materia-admin en la tabla correspondiente de la base de datos
+     * exceptuando el token, después de guardar esos datos se redirecciona a la vista materia-admin
      */
     public function store(Request $request)
     {
-        //
+        $datosMateria = request()->except('_token');
+        Materia::insert($datosMateria);
+        return redirect('materia');
+    }
+
+
+    /**
+     * Enlista los datos de la materia del identificador de la vista materia-admin
+     * para mostrarlos en la misma vistas pero en un modal
+     */
+    public function edit($id)
+    {
+        $materia = Materia::findOrFail($id);
+        return view('admin.materia-admin', compact('materia'));
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Materia  $materia
-     * @return \Illuminate\Http\Response
+     * Modifica los datos que vienen de la vista materia-admin en su respectiva tabla en la
+     * base de datos de acuerdo a su identificador, exceptuando el token y el método los cuales
+     * son dados en esta vista, luego hace un redireccionamiento a la vista materia-admin
      */
-    public function show(Materia $materia)
+    public function update($id)
     {
-        //
+        $datosMateria = request()->except(['_token', '_method']);
+        Materia::where('id', '=', $id)->update($datosMateria);
+        return redirect('materia');
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Materia  $materia
-     * @return \Illuminate\Http\Response
+     * Elimina el campo seleccionado en la vista materia-admin, utilizando su identificador correspondiente
+     * en la tabla de la base de datos, luego se redirecciona a la vista materia-admin
      */
-    public function edit(Materia $materia)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Materia  $materia
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Materia $materia)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Materia  $materia
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Materia $materia)
-    {
-        //
+        Materia::destroy($id);
+        return redirect('materia');
     }
 }

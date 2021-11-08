@@ -54,7 +54,7 @@
         </div>
         <div class="row" id="row1admin">
           <div class="col-lg-4 admin_box_col">
-            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/materiaadmin')}}">
+            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/materia')}}">
               <i class="fas fa-book"></i>
               <div class="admin_box_content">
                 <h2 class="admin_box_title">MATERIAS</h2>

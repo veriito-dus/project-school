@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 class GradeController extends Controller
 {
     /**
-     * Enlista los grados que se tiene en la base de datos y los muestra en la vista grados
+     * Enlista los grados que se tiene en la base de datos y los muestra en la vista grades-admin
      */
     public function index()
     {
@@ -26,8 +26,8 @@ class GradeController extends Controller
     }
 
     /**
-     * Agrega los datos que vienen de la vista grados en la tabla correspondiente de la base de datos
-     * exceptuando el token, después de guardar esos datos se redireccióna a la vista grados
+     * Agrega los datos que vienen de la vista grades-admin en la tabla correspondiente de la base de datos
+     * exceptuando el token, después de guardar esos datos se redireccióna a la vista grades-admin
      */
     public function store(Request $request)
     {
@@ -40,8 +40,8 @@ class GradeController extends Controller
     }
 
     /**
-     * Elimina el campo seleccionado en la vista grados, utilizando su identificador correspondiente
-     * en la tabla de la base de datos, luego se redirecciona a la vista grados
+     * Elimina el campo seleccionado en la vista grades-admin, utilizando su identificador correspondiente
+     * en la tabla de la base de datos, luego se redirecciona a la vista grades-admin
      */
     public function destroy($id)
     {

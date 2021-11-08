@@ -18,18 +18,19 @@
   @extends('navs.admin')
   <div class="containerTablaFiltro align-items-center justify-content-center">
     <h1 class="tituloGrado">Materias</h1>
-    <form action="" method="post" style="text-align:center;background-color: red;">
-      <div class="row" style="width:80%;margin:auto;background-color: pink;">
+    <form action="{{url('/materia')}}" method="post" style="text-align:center">
+      @csrf
+      <div class="row" style="width:80%;margin:auto">
         <div class="col-lg-5">
           <div class="filtro">
             <h2 class="title_filtro">Nombre Materia</h2>
-            <input type="text" placeholder="Digite la materia" name="Grade" id="Grade" />
+            <input type="text" placeholder="Digite la materia" name="Name" id="Name" />
           </div>
         </div>
         <div class="col-lg-5">
           <div class="filtro">
             <h2 class="title_filtro">Horas Materia</h2>
-            <input type="number" placeholder="Digite las horas" name="Grade" id="Grade" />
+            <input type="number" placeholder="Digite las horas" name="Hours" id="Hours" />
           </div>
         </div>
         <div class="col-lg-2">
@@ -55,11 +56,49 @@
             <tr>
               <td>{{ $materia->Name }}</td>
               <td>{{ $materia->Hours }}</td>
-              <td>Modificar</td>
               <td>
-                <form action="" method="post">
+                <!-- Button trigger modal -->
+                <button type="button" class="botonModificar" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $materia->id }}">
+                  Modificar
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal{{ $materia->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modificar {{$materia->Name}}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <form action="{{url('/materia/'.$materia->id)}}" method="post">
+                        <div class="modal-body">
+                          @csrf
+                          {{method_field('PATCH')}}
+                          <div class="filtro">
+                            <h2 class="title_filtro">Nombre Materia</h2>
+                            <input type="text" value="{{$materia->Name}}" name="Name" id="Name" />
+                          </div>
+                          <div class="filtro">
+                            <h2 class="title_filtro">Horas Materia</h2>
+                            <input type="number" value="{{$materia->Hours}}" name="Hours" id="Hours" />
+                          </div>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                          <input type="submit" class="btn btn-primary" style="margin-left: 100px;" value="Guardar">
+                          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <form action="{{url('/materia/'.$materia->id)}}" method="post">
+                  @csrf
+                  {{method_field('DELETE')}}
                   <!-- <input type="submit" onclick="return confirm('¿seguro de borrarlo?')" value="Eliminar"> -->
-                  <input type="submit" class="botonEliminar" onclick="return confirm('¿Desea borrar?')" value="Eliminar">
+                  <input type="submit" class="botonEliminar" onclick="return confirm('¿Desea borrar {{ $materia->Name }} ?')" value="Eliminar">
                 </form>
               </td>
             </tr>
@@ -106,6 +145,15 @@
     border: none;
     color: white;
     width: 80px;
+  }
+
+  .botonModificar {
+    background: #26DA5B;
+    border-radius: 30px;
+    cursor: pointer;
+    border: none;
+    color: black;
+    width: 90px;
   }
 
   .filtro input {
@@ -160,5 +208,26 @@
     text-align: center;
     top: 170px;
     padding-bottom: 35px;
+  }
+  .modal-footer button{
+    background: #EFEFF2;
+    color: black;
+    border:none;
+  }
+  .modal-footer button:hover{
+    background: #DFDFE5;
+    color: black;
+  }
+  .modal-body{
+    background: #F8F8F8;
+  }
+  .modal-body input{
+    border: 1.5px solid #DFDFE5;
+    width: 40%;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  .modal-body .title_filtro{
+    font-size: 1rem;
   }
 </style>

@@ -5,7 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeacherGradeController;
-use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\NotasController;
 use App\Http\Controllers\NotasPruebaSaberController;
 use App\Http\Controllers\GradeController;
@@ -107,7 +107,7 @@ Route::resource('user',UserController::class);
 Route::resource('student',StudentController::class);
 Route::resource('teacher',TeacherController::class);
 Route::resource('teachergrade',TeacherGradeController::class);
-Route::resource('subject',SubjectController::class);
+Route::resource('materia',MateriaController::class);//listo
 Route::resource('notas',NotasController::class);
 Route::resource('notas-pruebas-saber',NotasPruebaSaberController::class);
 Route::resource('grado',GradeController::class); //listo
