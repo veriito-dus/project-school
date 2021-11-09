@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\StudentController;
+use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeacherGradeController;
 use App\Http\Controllers\MateriaController;
@@ -104,7 +104,7 @@ Route::get('/prueba', function () {
 
 
 Route::resource('user',UserController::class);
-Route::resource('student',StudentController::class);
+Route::resource('estudiante',EstudianteController::class);
 Route::resource('teacher',TeacherController::class);
 Route::resource('teachergrade',TeacherGradeController::class);
 Route::resource('materia',MateriaController::class);//listo

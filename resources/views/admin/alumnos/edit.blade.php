@@ -4,18 +4,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="../plugins/fontawesome-free-5.15.4-web/css/all.css" rel="stylesheet" type="text/css">
-  <link rel="icon" href="../img/icono.ico" />
-  <link rel="stylesheet" type="text/css" href="../css/navs/nav_admin.css">
-  <link rel="stylesheet" type="text/css" href="../css/responsive.css">
+  <link href="../../plugins/fontawesome-free-5.15.4-web/css/all.css" rel="stylesheet" type="text/css">
+  <link rel="icon" href="../../img/icono.ico" />
+  <link rel="stylesheet" type="text/css" href="../../css/navs/nav_admin.css">
+  <link rel="stylesheet" type="text/css" href="../../css/responsive.css">
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
-  <title>Crear Alumno</title>
+  <title>Modificar Alumno</title>
 </head>
 
-<body style="background-image:url(../img/fondo_n.jpg)">
+<body style="background-image:url(../../img/fondo_n.jpg)">
   <div class="super_container">
     <header class="header d-flex flex-row">
       <div class="header_content d-flex flex-row align-items-center">
@@ -34,7 +34,7 @@
               <li class="main_nav_item"><a href="{{url('/teacheradmin')}}"><i class="fas fa-user-tie"></i>Docentes</a></li>
               <li class="main_nav_item"><a href="{{url('/grado')}}"><i class="fas fa-chalkboard-teacher"></i>Grados</a></li>
 
-              <li class="main_nav_item"><a href="{{url('/index-teacher-grade')}}"> <img src="../img/icono.ico"></a></li>
+              <li class="main_nav_item"><a href="{{url('/index-teacher-grade')}}"> <img src="../../img/icono.ico"></a></li>
             </ul>
           </div>
         </nav>
@@ -43,13 +43,14 @@
     </header>
   </div>
   <div class="containerTablaFiltro align-items-center justify-content-center">
-    <h1 class="tituloAlumnoNuevo">Alumno Nuevo</h1>
-    <form action="{{url('/estudiante')}}" method="post" style="text-align:center" enctype="multipart/form-data">
+    <h1 class="tituloAlumnoNuevo">Modificar Alumno</h1>
+    <form action="{{url('/estudiante/'.$estudiante->id)}}" method="post" style="text-align:center" enctype="multipart/form-data">
       @csrf
+      {{method_field('PATCH')}}
       <div class="row" style="margin:0 auto;left:50px;text-align:center;top:10px">
 
         <div class="col-lg-5">
-          <img src="../img/icono.ico">
+          <img src="{{asset('storage').'/'.$estudiante->Foto}}" alt="" width="190">
           <div id="div_file">
             <p>Examinar</p>
             <input type="file" name="Foto" value="" id="Foto">
@@ -59,19 +60,19 @@
         <div class="col-lg-3 teacher_box_col">
           <div class="filtro">
             <h2 class="titleInformatio" for="Nombre">Nombre</h2>
-            <input type="text" placeholder="Digite el Nombre" name="Nombre" id="Nombre" />
+            <input type="text" value="{{ $estudiante->Nombre }}" name="Nombre" id="Nombre" />
           </div>
           <div class="filtro">
             <h2 class="titleInformatio" for="Apellido">Apellido</h2>
-            <input type="text" placeholder="Digite el Apellido" name="Apellido" id="Apellido" />
+            <input type="text" value="{{ $estudiante->Apellido }}" name="Apellido" id="Apellido" />
           </div>
           <div class="filtro">
             <h2 class="titleInformatio" for="Telefono">Telefono</h2>
-            <input type="text" placeholder="Digite el Telefono" name="Telefono" id="Telefono" />
+            <input type="text" value="{{ $estudiante->Telefono }}" name="Telefono" id="Telefono" />
           </div>
           <div class="filtro">
             <h2 class="titleInformatio" for="Acudiente">Acudiente</h2>
-            <input type="text" placeholder="Digite el nombre Acudiente" name="Acudiente" id="Acudiente" />
+            <input type="text" value="{{ $estudiante->Acudiente }}" name="Acudiente" id="Acudiente" />
           </div>
         </div>
 
@@ -79,20 +80,20 @@
         <div class="col-lg-3 teacher_box_col">
           <div class="filtro">
             <h2 class="titleInformatio" for="Direccion">Direccion</h2>
-            <input type="text" placeholder="Digite la Dirección" required="" name="Direccion" id="Direccion" />
+            <input type="text" value="{{ $estudiante->Direccion }}" name="Direccion" id="Direccion" />
           </div>
           <div class="filtro">
             <h2 class="titleInformatio" for="Correo">Correo</h2>
-            <input type="email" placeholder="Digite el Correo" required="" name="Correo" id="Correo" />
+            <input type="text" value="{{ $estudiante->Correo }}" name="Correo" id="Correo" />
           </div>
           <div class="filtro">
             <h2 class="titleInformatio" for="TarjetaIdentidad">Tarjeta identidad</h2>
-            <input type="text" placeholder="Digite el numero T.I" required="" name="TarjetaIdentidad" id="TarjetaIdentidad" />
+            <input type="text" value="{{ $estudiante->TarjetaIdentidad }}" name="TarjetaIdentidad" id="TarjetaIdentidad" />
           </div>
           <div class="filtro">
             <h2 class="titleInformatio" for="Grado_id">Grado</h2>
             <select name="Grado_id" id="Grado_id">
-              <option selected class="form-control">--seleccione un grado--</option>
+              <option selected class="form-control">{{ $estudiante->grade->Grade }}</option>
               @foreach($grados as $grade)
               <option value="{{ $grade->id }}">{{ $grade->Grade }}</option>
               @endforeach

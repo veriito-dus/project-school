@@ -15,7 +15,8 @@ use Illuminate\Http\Request;
 class GradeController extends Controller
 {
     /**
-     * Enlista los grados que se tiene en la base de datos y los muestra en la vista grades-admin
+     * Enlista los grados que se tiene en la base de datos y
+     * los muestra en la vista grades-admin
      */
     public function index()
     {

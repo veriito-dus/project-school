@@ -64,7 +64,7 @@
           </div>
 
           <div class="col-lg-4 admin_box_col">
-            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/alumnoadmin')}}">
+            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/estudiante')}}">
               <i class="fas fa-user-friends"></i>
               <div class="admin_box_content">
                 <h2 class="admin_box_title">ALUMNOS</h2>
