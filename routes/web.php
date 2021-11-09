@@ -1,14 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\ProfesorController;
-use App\Http\Controllers\TeacherGradeController;
 use App\Http\Controllers\MateriaController;
+use App\Http\Controllers\GradeController;
+
+use App\Http\Controllers\AsignacionAGController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\TeacherGradeController;
 use App\Http\Controllers\NotasController;
 use App\Http\Controllers\NotasPruebaSaberController;
-use App\Http\Controllers\GradeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,10 +106,13 @@ Route::get('/prueba', function () {
 
 
 Route::resource('user',UserController::class);
-Route::resource('estudiante',EstudianteController::class);//listo
-Route::resource('profesor',ProfesorController::class);
-Route::resource('teachergrade',TeacherGradeController::class);
-Route::resource('materia',MateriaController::class);//listo
-Route::resource('notas',NotasController::class);
 Route::resource('notas-pruebas-saber',NotasPruebaSaberController::class);
+Route::resource('notas',NotasController::class);
+Route::resource('teachergrade',TeacherGradeController::class);
+Route::resource('asginacionAG',AsignacionAGController::class);
+
+Route::resource('estudiante',EstudianteController::class);//listo
+Route::resource('profesor',ProfesorController::class);//listo
+Route::resource('materia',MateriaController::class);//listo
 Route::resource('grado',GradeController::class); //listo
+

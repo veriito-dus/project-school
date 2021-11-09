@@ -23,8 +23,6 @@ class CreateEstudiantesTable extends Migration
             $table->string('Direccion');
             $table->string('Correo');
             $table->string('TarjetaIdentidad');
-            $table->unsignedBigInteger('Grado_id');
-            $table->foreign('Grado_id')->references('id')->on('grades');
             $table->timestamps();
         });
     }

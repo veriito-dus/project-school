@@ -11,60 +11,76 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
-  <title>Alumnos</title>
+  <title>AsignacionAG</title>
 </head>
 
 <body style="background-image:url(img/fondo_n.jpg)">
   @extends('navs.admin')
   <div class="containerTablaFiltro align-items-center justify-content-center">
-    <h1 class="tituloGrado">ALUMNOS</h1>
-    <div class="col-lg-12">
-      <div>
-        <a type="submit" class="agregaralumno" href="{{url('estudiante/create')}}">Agregar</a>
+    <h1 class="tituloGrado">ASIGNACION ALUMNO - GRADO</h1>
+    <form action="{{url('/asginacionAG')}}" method="post" style="text-align:center">
+      @csrf
+      <div class="row" style="margin:0 auto;text-align:center;margin-left:100px">
+        <div class="col-lg-4 adminag_box_col">
+          <div class="adminag_filtro">
+            <h2 class="adminag_box_title">Alumno</h2>
+            <select name="Estudiante_id" id="Estudiante_id">
+              <option selected class="form-control">--seleccione un Alumno--</option>
+              @foreach($estudiantes as $estudiante)
+              <option value="{{ $estudiante->id }}">{{ $estudiante->Nombre }} {{ $estudiante->Apellido }}</option>
+              @endforeach
+            </select>
+            <!-- <input type="password" placeholder="Texto" required="" id="Contraseña" /> -->
+          </div>
+        </div>
+
+        <div class="col-lg-4 adminag_box_col">
+          <div class="adminag_filtro">
+            <h2 class="adminag_box_title">Grado</h2>
+            <select name="Grado_id" id="Grado_id">
+              <option selected class="form-control">--seleccione un grado--</option>
+              @foreach($grados as $grade)
+              <option value="{{ $grade->id }}">{{ $grade->Grade }}</option>
+              @endforeach
+            </select>
+          </div>
+        </div>
+
+        <div class="col-lg-2 adminag_box_col">
+          <div class="adminag_filtro" style="margin-top: 35px;">
+            <div class="filtroBoton">
+              <input type="submit" value="Agregar">
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </form>
     <div class="tablaGrado">
       <div class="diseñoTablaGrado">
-        <table class="table" id="prueba" style="padding-right: 20px; margin-left:-38px;">
+        <table class="table" id="prueba" style="padding-right: 20px;">
           <thead>
             <tr class="principal">
-              <th>Foto</th>
-              <th>Nombre</th>
-              <th>Apellido</th>
-              <th>Telefono</th>
-              <th>Direccion</th>
-              <th>Correo</th>
-              <th>T.I</th>
-              <th>Acudiente</th>
+              <th>Alumno</th>
               <th>Grado</th>
               <th>modificar</th>
               <th>eliminar</th>
             </tr>
           </thead>
           <tbody>
-            @foreach($estudiantes as $estudiante)
+            @foreach($asignacionAG as $asignacionAG)
             <tr>
+              <td>{{ $asignacionAG->estudiante->Nombre }} {{ $asignacionAG->estudiante->Apellido }}</td>
+              <td>{{ $asignacionAG->grade->Grade }}</td>
               <td>
-                <img src="{{asset('storage').'/'.$estudiante->Foto}}" alt="" width="50">
-              </td>
-              <td>{{ $estudiante->Nombre }}</td>
-              <td>{{ $estudiante->Apellido }}</td>
-              <td>{{ $estudiante->Telefono }}</td>
-              <td>{{ $estudiante->Direccion }}</td>
-              <td>{{ $estudiante->Correo }}</td>
-              <td>{{ $estudiante->TarjetaIdentidad }}</td>
-              <td>{{ $estudiante->Acudiente }}</td>
-              <td>{{ $estudiante->grade->Grade }}</td>
-              <td>
-                <button type="button" class="botonModificar" >
-                <a href="{{url('/estudiante/'.$estudiante->id.'/edit')}}">Modificar</a>
+                <button type="button" class="botonModificar">
+                  <a href="">Modificar</a>
                 </button>
               </td>
               <td>
-                <form action="{{url('/estudiante/'.$estudiante->id)}}" method="post">
+              <form action="{{url('/asginacionAG/'.$asignacionAG->id)}}" method="post">
                   @csrf
                   {{method_field('DELETE')}}
-                  <input type="submit" class="botonEliminar" onclick="return confirm('¿Desea borrar a {{$estudiante->Nombre}}?')" value="Eliminar">
+                  <input type="submit" class="botonEliminar" onclick="return confirm('¿Desea borrar esta asignacion ?')" value="Eliminar">
                 </form>
               </td>
             </tr>
@@ -89,7 +105,7 @@
   .tablaGrado {
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
-    width: 96%;
+    width: 80%;
     margin: 0 auto;
     margin-top: 20px;
     box-shadow: 2px 0 3px rgba(0, 0, 0, 0.678);
@@ -122,11 +138,13 @@
     width: 80px;
     text-decoration: none;
   }
-  .botonModificar a{
+
+  .botonModificar a {
     text-decoration: none;
     color: #000;
   }
-  .botonModificar a:hover{
+
+  .botonModificar a:hover {
     text-decoration: none;
     color: #000;
   }
@@ -159,7 +177,7 @@
     border: none;
     width: 80px;
     color: white;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   .title_filtro {

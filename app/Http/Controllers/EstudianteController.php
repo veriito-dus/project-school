@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estudiante;
-use App\Models\Grade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -33,8 +32,7 @@ class EstudianteController extends Controller
      */
     public function create()
     {
-        $grados = Grade::all();
-        return view('admin.alumnos.add', compact('grados'));
+        return view('admin.alumnos.add');
     }
 
     /**
@@ -62,8 +60,7 @@ class EstudianteController extends Controller
     public function edit($id)
     {
         $estudiante = Estudiante::findOrFail($id);
-        $grados = Grade::all();
-        return view('admin.alumnos.edit', compact('estudiante', 'grados'));
+        return view('admin.alumnos.edit', compact('estudiante'));
     }
 
     /**

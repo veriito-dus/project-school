@@ -20,7 +20,7 @@
     <h1 class="tituloGrado">ALUMNOS</h1>
     <div class="col-lg-12">
       <div>
-        <a type="submit" class="agregaralumno" href="{{url('estudiante/create')}}">Agregar</a>
+        <a type="submit" class="filtroBoton" href="{{url('estudiante/create')}}">Agregar</a>
       </div>
     </div>
     <div class="tablaGrado">
@@ -36,7 +36,6 @@
               <th>Correo</th>
               <th>T.I</th>
               <th>Acudiente</th>
-              <th>Grado</th>
               <th>modificar</th>
               <th>eliminar</th>
             </tr>
@@ -54,7 +53,6 @@
               <td>{{ $estudiante->Correo }}</td>
               <td>{{ $estudiante->TarjetaIdentidad }}</td>
               <td>{{ $estudiante->Acudiente }}</td>
-              <td>{{ $estudiante->grade->Grade }}</td>
               <td>
                 <button type="button" class="botonModificar" >
                 <a href="{{url('/estudiante/'.$estudiante->id.'/edit')}}">Modificar</a>
@@ -146,20 +144,22 @@
 
   }
 
-  .filtroBoton input:hover {
+  .filtroBoton:hover {
     background: rgba(255, 255, 255, 0.750);
     border: 1.5px solid #26A0DA;
     color: black;
+    text-decoration: none;
   }
 
-  .filtroBoton input {
+  .filtroBoton {
     background: #26A0DA;
     border-radius: 30px;
     cursor: pointer;
     border: none;
-    width: 80px;
+    padding: 3px 10px 3px 10px;
     color: white;
     margin-top: 20px;
+    text-decoration: none;
   }
 
   .title_filtro {

@@ -74,7 +74,7 @@
           </div>
 
           <div class="col-lg-4 admin_box_col">
-            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/teacheradmin')}}">
+            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/profesor')}}">
               <i class="fas fa-user-tie"></i>
               <div class="admin_box_content">
                 <h2 class="admin_box_title">DOCENTES</h2>

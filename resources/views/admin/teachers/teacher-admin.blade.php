@@ -20,7 +20,7 @@
     <h1 class="tituloGrado">DOCENTES</h1>
     <div class="col-lg-12">
       <div>
-        <a type="submit" class="agregaralumno" href="{{url('profesor/create')}}">Agregar</a>
+        <a type="submit" class="filtroBoton" href="{{url('profesor/create')}}">Agregar</a>
       </div>
     </div>
     <div class="tablaGrado">
@@ -54,12 +54,12 @@
               <td>{{ $profesor->Cedula }}</td>
               <td>{{ $profesor->grade->Grade }}</td>
               <td>
-              <button type="button" class="botonModificar" >
-                <a href="{{url('/profesor/'.$profesor->id.'/edit')}}">Modificar</a>
+                <button type="button" class="botonModificar">
+                  <a href="{{url('/profesor/'.$profesor->id.'/edit')}}">Modificar</a>
                 </button>
               </td>
               <td>
-              <form action="{{url('/profesor/'.$profesor->id)}}" method="post">
+                <form action="{{url('/profesor/'.$profesor->id)}}" method="post">
                   @csrf
                   {{method_field('DELETE')}}
                   <input type="submit" class="botonEliminar" onclick="return confirm('¿Desea borrar a {{$profesor->Nombre}}?')" value="Eliminar">
@@ -146,21 +146,24 @@
 
   }
 
-  .filtroBoton input:hover {
+  .filtroBoton:hover {
     background: rgba(255, 255, 255, 0.750);
     border: 1.5px solid #26A0DA;
     color: black;
+    text-decoration: none;
   }
 
-  .filtroBoton input {
+  .filtroBoton {
     background: #26A0DA;
     border-radius: 30px;
     cursor: pointer;
     border: none;
-    width: 80px;
+    padding: 3px 10px 3px 10px;
     color: white;
     margin-top: 20px;
+    text-decoration: none;
   }
+
 
   .title_filtro {
     color: black;

@@ -8,7 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Estudiante extends Model
 {
     use HasFactory;
-    public function grade(){
-        return $this->hasOne('App\Models\Grade','id','Grado_id');
-    }
 }

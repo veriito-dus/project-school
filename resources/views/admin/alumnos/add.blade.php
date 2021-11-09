@@ -89,19 +89,11 @@
             <h2 class="titleInformatio" for="TarjetaIdentidad">Tarjeta identidad</h2>
             <input type="text" placeholder="Digite el numero T.I" required="" name="TarjetaIdentidad" id="TarjetaIdentidad" />
           </div>
-          <div class="filtro">
-            <h2 class="titleInformatio" for="Grado_id">Grado</h2>
-            <select name="Grado_id" id="Grado_id">
-              <option selected class="form-control">--seleccione un grado--</option>
-              @foreach($grados as $grade)
-              <option value="{{ $grade->id }}">{{ $grade->Grade }}</option>
-              @endforeach
-            </select>
+          <div class="filtroBoton col-lg-5" style="margin-left:50%">
+            <input type="submit" value="Guardar" />
           </div>
         </div>
-        <div class="filtroBoton col-lg-5" style="margin-left:50%">
-          <input type="submit" value="Guardar" />
-        </div>
+
       </div>
     </form>
   </div>
@@ -133,6 +125,7 @@
     width: 80px;
     color: black;
     margin-left: -100px;
+    margin-top: 40px;
   }
 
   select {
