@@ -17,7 +17,7 @@
             <!-- <li class="main_nav_item"><a href="{{url('/profile-teacher')}}"><i class="fas fa-user"></i>asignacion</a></li> -->
             <li class="main_nav_item"><a href="{{url('/materia')}}"><i class="fas fa-book"></i>Materias</a></li>
             <li class="main_nav_item"><a href="{{url('/estudiante')}}"><i class="fas fa-user-friends"></i>Alumnos</a></li>
-            <li class="main_nav_item"><a href="{{url('/teacheradmin')}}"><i class="fas fa-user-tie"></i>Docentes</a></li>
+            <li class="main_nav_item"><a href="{{url('/profesor')}}"><i class="fas fa-user-tie"></i>Docentes</a></li>
             <li class="main_nav_item"><a href="{{url('/grado')}}"><i class="fas fa-chalkboard-teacher"></i>Grados</a></li>
 
             <li class="main_nav_item"><a href="{{url('/index-teacher-grade')}}"> <img src="img/icono.ico"></a></li>

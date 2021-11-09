@@ -72,11 +72,9 @@ class EstudianteController extends Controller
      * y el método, también contiene una condición para borrar del sistema la foto
      * existente si se hace una modificación de esta, luego hace un
      * redireccionamiento a la vista alumnos-admin
-
      */
     public function update(Request $request, $id)
     {
-        //se borra la foto si se actualiza
         $datosEstudiante = request()->except(['_token', '_method']);
         if ($request->hasFile('Foto')) {
             $estudiante = Estudiante::findOrFail($id);
@@ -86,7 +84,6 @@ class EstudianteController extends Controller
         Estudiante::where('id', '=', $id)->update($datosEstudiante);
         return redirect('estudiante');
     }
-
 
     /**
      * Elimina el campo seleccionado en la vista alumnos-admin, utilizando su
