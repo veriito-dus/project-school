@@ -72,12 +72,45 @@
               <td>{{ $asignacionAG->estudiante->Nombre }} {{ $asignacionAG->estudiante->Apellido }}</td>
               <td>{{ $asignacionAG->grade->Grade }}</td>
               <td>
-                <button type="button" class="botonModificar">
-                  <a href="">Modificar</a>
+                <!-- Button trigger modal -->
+                <button type="button" class="botonModificar" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $asignacionAG->id}}">
+                  Modificar
                 </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal{{ $asignacionAG->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modificar {{ $asignacionAG->estudiante->Nombre }} {{ $asignacionAG->estudiante->Apellido }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <form action="{{url('/asginacionAG/'.$asignacionAG->id)}}" method="post">
+                        <div class="modal-body">
+                          <h2 class="adminag_box_title" style="font-weight: bold;">Grado Actual</h2>
+                          <h2 class="adminag_box_title" style="margin: 20px 0 20px 0">{{ $asignacionAG->grade->Grade }}</h2>
+                          <h2 class="adminag_box_title" style="font-weight: bold;margin-bottom:20px">Pasa a </h2>
+                          @csrf
+                          {{method_field('PATCH')}}
+                          <select name="Grado_id" id="Grado_id">
+                            <option selected class="form-control">--seleccione un grado--</option>
+                            @foreach($grados as $grade)
+                            <option value="{{ $grade->id }}">{{ $grade->Grade }}</option>
+                            @endforeach
+                          </select>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                          <input type="submit" class="btn btn-primary" style="margin-left: 100px;" value="Guardar">
+                          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
               </td>
               <td>
-              <form action="{{url('/asginacionAG/'.$asignacionAG->id)}}" method="post">
+                <form action="{{url('/asginacionAG/'.$asignacionAG->id)}}" method="post">
                   @csrf
                   {{method_field('DELETE')}}
                   <input type="submit" class="botonEliminar" onclick="return confirm('¿Desea borrar esta asignacion ?')" value="Eliminar">
@@ -218,7 +251,7 @@
     background: #F8F8F8;
   }
 
-  .modal-body input {
+  .modal-body select {
     border: 1.5px solid #DFDFE5;
     width: 40%;
     border-radius: 5px;

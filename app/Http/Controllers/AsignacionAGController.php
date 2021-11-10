@@ -8,8 +8,8 @@ use App\Models\Grade;
 use Illuminate\Http\Request;
 
 /**
- * Controlador Estudiantes
- * Procesos que se realizaran sobre los estudiantes de la institución
+ * Controlador Asignacion alumno - grado
+ * Procesos que se realizaran sobre los las asignaciones entre alumnos y grados de la institución
  * 
  * @author    Veronica Lisseth Dussan Parra
  * @since     09 de noviembre del 2021
@@ -18,33 +18,20 @@ use Illuminate\Http\Request;
 class AsignacionAGController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Enlista las los estudiantes, los grados y las asignaciones que se tiene en la base de datos
+     * y los muestra en la vista asignacion-ag
      */
     public function index()
     {
         $asignacionAG = AsignacionAG::all();
         $estudiantes = Estudiante::all();
         $grados = Grade::all();
-        return view('prueba.prueba', compact('estudiantes', 'grados', 'asignacionAG'));
+        return view('admin.asignacion-ag', compact('estudiantes', 'grados', 'asignacionAG'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Agrega los datos que vienen de la vista asignacion-ag en la tabla correspondiente de la base de datos
+     * exceptuando el token, después de guardar esos datos se redirecciona a la vista asignacion-ag
      */
     public function store(Request $request)
     {
@@ -54,48 +41,23 @@ class AsignacionAGController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\AsignacionAG  $asignacionAG
-     * @return \Illuminate\Http\Response
+     * Modifica los datos que vienen de la vista asignacion-ag en su respectiva tabla en la
+     * base de datos de acuerdo a su identificador, exceptuando el token y el método los cuales
+     * son dados en esta vista, luego hace un redireccionamiento a la vista asignacion-ag
      */
-    public function show(AsignacionAG $asignacionAG)
+    public function update($id)
     {
-        //
+        $datosAsignacionAG = request()->except(['_token', '_method']);
+        AsignacionAG::where('id', '=', $id)->update($datosAsignacionAG);
+        return redirect('asginacionAG');
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\AsignacionAG  $asignacionAG
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(AsignacionAG $asignacionAG)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AsignacionAG  $asignacionAG
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, AsignacionAG $asignacionAG)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\AsignacionAG  $asignacionAG
-     * @return \Illuminate\Http\Response
+     * Elimina el campo seleccionado en la vista asignacion-ag, utilizando su identificador correspondiente
+     * en la tabla de la base de datos, luego se redirecciona a la vista asignacion-ag
      */
     public function destroy($id)
     {
-        // $empleado=Grade::findOrFail($id);
         AsignacionAG::destroy($id);
         return redirect('asginacionAG');
     }
