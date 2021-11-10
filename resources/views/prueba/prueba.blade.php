@@ -11,30 +11,30 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
-  <title>AsignacionAG</title>
+  <title>AsignacionDGM</title>
 </head>
 
 <body style="background-image:url(img/fondo_n.jpg)">
   @extends('navs.admin')
   <div class="containerTablaFiltro align-items-center justify-content-center">
-    <h1 class="tituloGrado">ASIGNACION ALUMNO - GRADO</h1>
-    <form action="{{url('/asginacionAG')}}" method="post" style="text-align:center">
+    <h1 class="tituloGrado">ASIGNACION PROFESOR - GRADO - MATERIA</h1>
+    <form action="{{url('/asginacionDMG')}}" method="post" style="text-align:center">
       @csrf
       <div class="row" style="margin:0 auto;text-align:center;margin-left:100px">
-        <div class="col-lg-4 adminag_box_col">
+        <div class="col-lg-5 adminag_box_col">
           <div class="adminag_filtro">
-            <h2 class="adminag_box_title">Alumno</h2>
-            <select name="Estudiante_id" id="Estudiante_id">
-              <option selected class="form-control">--seleccione un Alumno--</option>
-              @foreach($estudiantes as $estudiante)
-              <option value="{{ $estudiante->id }}">{{ $estudiante->Nombre }} {{ $estudiante->Apellido }}</option>
+            <h2 class="adminag_box_title">Profesor</h2>
+            <select name="Profesor_id" id="Profesor_id">
+              <option selected class="form-control">--seleccione un Profesor--</option>
+              @foreach($profesores as $profesore)
+              <option value="{{ $profesore->id }}">{{ $profesore->Nombre }} {{ $profesore->Apellido }}</option>
               @endforeach
             </select>
             <!-- <input type="password" placeholder="Texto" required="" id="Contraseña" /> -->
           </div>
         </div>
 
-        <div class="col-lg-4 adminag_box_col">
+        <div class="col-lg-5 adminag_box_col">
           <div class="adminag_filtro">
             <h2 class="adminag_box_title">Grado</h2>
             <select name="Grado_id" id="Grado_id">
@@ -45,9 +45,23 @@
             </select>
           </div>
         </div>
+      </div>
+      <div class="row" style="margin:0 auto;text-align:center;margin-left:100px">
+        <div class="col-lg-5 adminag_box_col">
+          <div class="adminag_filtro">
+            <h2 class="adminag_box_title">Materia</h2>
+            <select name="Materia_id" id="Materia_id">
+              <option selected class="form-control">--seleccione un Materia--</option>
+              @foreach($materias as $materia)
+              <option value="{{ $materia->id }}">{{ $materia->Name }}</option>
+              @endforeach
+            </select>
+            <!-- <input type="password" placeholder="Texto" required="" id="Contraseña" /> -->
+          </div>
+        </div>
 
-        <div class="col-lg-2 adminag_box_col">
-          <div class="adminag_filtro" style="margin-top: 35px;">
+        <div class="col-lg-2 offset-md-2 adminag_box_col">
+          <div class="adminag_filtro" style="margin-top: 35px;margin-left:-70px">
             <div class="filtroBoton">
               <input type="submit" value="Agregar">
             </div>
@@ -60,57 +74,20 @@
         <table class="table" id="prueba" style="padding-right: 20px;">
           <thead>
             <tr class="principal">
-              <th>Alumno</th>
+              <th>Profesor</th>
               <th>Grado</th>
-              <th>modificar</th>
+              <th>Materia</th>
               <th>eliminar</th>
             </tr>
           </thead>
           <tbody>
-            @foreach($asignacionAG as $asignacionAG)
+            @foreach($asignacionDMG as $asignacionDMG)
             <tr>
-              <td>{{ $asignacionAG->estudiante->Nombre }} {{ $asignacionAG->estudiante->Apellido }}</td>
-              <td>{{ $asignacionAG->grade->Grade }}</td>
+              <td>{{ $asignacionDMG->profesor->Nombre }} {{ $asignacionDMG->profesor->Apellido }}</td>
+              <td>{{ $asignacionDMG->grade->Grade }}</td>
+              <td>{{ $asignacionDMG->materia->Name }}</td>
               <td>
-                <!-- Button trigger modal -->
-                <button type="button" class="botonModificar" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $asignacionAG->id}}">
-                  Modificar
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal{{ $asignacionAG->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modificar {{ $asignacionAG->estudiante->Nombre }} {{ $asignacionAG->estudiante->Apellido }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <form action="{{url('/asginacionAG/'.$asignacionAG->id)}}" method="post">
-                        <div class="modal-body">
-                          <h2 class="adminag_box_title" style="font-weight: bold;">Grado Actual</h2>
-                          <h2 class="adminag_box_title" style="margin: 20px 0 20px 0">{{ $asignacionAG->grade->Grade }}</h2>
-                          <h2 class="adminag_box_title" style="font-weight: bold;margin-bottom:20px">Pasa a </h2>
-                          @csrf
-                          {{method_field('PATCH')}}
-                          <select name="Grado_id" id="Grado_id">
-                            <option selected class="form-control">--seleccione un grado--</option>
-                            @foreach($grados as $grade)
-                            <option value="{{ $grade->id }}">{{ $grade->Grade }}</option>
-                            @endforeach
-                          </select>
-                        </div>
-                        <div class="modal-footer justify-content-center">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                          <input type="submit" class="btn btn-primary" style="margin-left: 100px;" value="Guardar">
-                          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <form action="{{url('/asginacionAG/'.$asignacionAG->id)}}" method="post">
+                <form action="{{url('/asginacionDMG/'.$asignacionDMG->id)}}" method="post">
                   @csrf
                   {{method_field('DELETE')}}
                   <input type="submit" class="botonEliminar" onclick="return confirm('¿Desea borrar esta asignacion ?')" value="Eliminar">

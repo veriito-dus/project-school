@@ -33,7 +33,7 @@
           </div>
 
           <div class="col-lg-4 admin_box_col">
-            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/asignacionpgm')}}">
+            <a class="admin_box d-flex flex-row align-items-center justify-content-start" href="{{url('/asginacionDMG')}}">
               <i class="fas fa-file-signature"></i>
               <div class="admin_box_content">
                 <h2 class="admin_box_title">ASIGNACION DOCENTE MATERIA GRADO</h2>
