@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Profesor;
 use App\Models\Grade;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -34,7 +35,8 @@ class ProfesorController extends Controller
     public function create()
     {
         $grados = Grade::all();
-        return view('admin.teachers.add', compact('grados'));
+        $usuarios = User::all();
+        return view('admin.teachers.add', compact('grados','usuarios'));
     }
 
     /**

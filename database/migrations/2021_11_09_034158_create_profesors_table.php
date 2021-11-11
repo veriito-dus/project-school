@@ -23,7 +23,9 @@ class CreateProfesorsTable extends Migration
             $table->string('Correo');
             $table->string('Cedula');
             $table->unsignedBigInteger('Grado_id');
+            $table->unsignedBigInteger('Usuario_id');
             $table->foreign('Grado_id')->references('id')->on('grades');
+            $table->foreign('Usuario_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

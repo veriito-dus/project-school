@@ -18,16 +18,6 @@ class LoginController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -48,40 +38,6 @@ class LoginController extends Controller
         } elseif (auth()->user()->rol_id == '3') {
             return redirect()->to('/profesorAsignado');
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\login  $login
-     * @return \Illuminate\Http\Response
-     */
-    public function show(login $login)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\login  $login
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(login $login)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\login  $login
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, login $login)
-    {
-        //
     }
 
     /**

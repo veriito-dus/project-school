@@ -59,19 +59,19 @@
         <div class="col-lg-3 teacher_box_col">
           <div class="filtro">
             <h2 class="titleInformatio" for="Nombre">Nombre</h2>
-            <input type="text" placeholder="Digite el Nombre" name="Nombre" id="Nombre" />
+            <input type="text" placeholder="Digite el Nombre" required name="Nombre" id="Nombre" />
           </div>
           <div class="filtro">
             <h2 class="titleInformatio" for="Apellido">Apellido</h2>
-            <input type="text" placeholder="Digite el Apellido" name="Apellido" id="Apellido" />
+            <input type="text" placeholder="Digite el Apellido" required name="Apellido" id="Apellido" />
           </div>
           <div class="filtro">
             <h2 class="titleInformatio" for="Telefono">Telefono</h2>
-            <input type="text" placeholder="Digite el Telefono" name="Telefono" id="Telefono" />
+            <input type="text" placeholder="Digite el Telefono" required name="Telefono" id="Telefono" />
           </div>
           <div class="filtro">
             <h2 class="titleInformatio" for="Direccion">Direccion</h2>
-            <input type="text" placeholder="Digite la Dirección" required="" name="Direccion" id="Direccion" />
+            <input type="text" placeholder="Digite la Dirección" required name="Direccion" id="Direccion" />
           </div>
         </div>
 
@@ -79,24 +79,33 @@
         <div class="col-lg-3 teacher_box_col">
           <div class="filtro">
             <h2 class="titleInformatio" for="Correo">Correo</h2>
-            <input type="email" placeholder="Digite el Correo" required="" name="Correo" id="Correo" />
+            <input type="email" placeholder="Digite el Correo" required name="Correo" id="Correo" />
           </div>
           <div class="filtro">
             <h2 class="titleInformatio" for="Cedula">Cedula</h2>
-            <input type="text" placeholder="Digite el numero Cedula" required="" name="Cedula" id="Cedula" />
+            <input type="text" placeholder="Digite el numero Cedula" required name="Cedula" id="Cedula" />
           </div>
           <div class="filtro">
             <h2 class="titleInformatio" for="Grado_id">Grado</h2>
-            <select name="Grado_id" id="Grado_id">
+            <select name="Grado_id" id="Grado_id" required>
               <option selected class="form-control">--seleccione un grado--</option>
               @foreach($grados as $grade)
               <option value="{{ $grade->id }}">{{ $grade->Grade }}</option>
               @endforeach
             </select>
           </div>
-          <div class="filtroBoton col-lg-5" style="margin-left:50%">
-            <input type="submit" value="Guardar" />
+          <div class="filtro">
+            <h2 class="titleInformatio" for="Usuario_id" required>Usuario</h2>
+            <select name="Usuario_id" id="Usuario_id">
+              <option selected class="form-control">--seleccione un usuario--</option>
+              @foreach($usuarios as $usuario)
+              <option value="{{ $usuario->id }}">{{ $usuario->name }}</option>
+              @endforeach
+            </select>
           </div>
+        </div>
+        <div class="filtroBoton col-lg-5" style="margin-left:45%">
+          <input type="submit" value="Guardar" />
         </div>
       </div>
     </form>
@@ -128,8 +137,6 @@
     border: none;
     width: 80px;
     color: black;
-    margin-left: -100px;
-    margin-top: 40px;
   }
 
   select {
