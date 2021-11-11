@@ -70,16 +70,8 @@ i{
 	font-size: 30px;
 }
 
-.left form input[type="text"],
-.left form input[type="password"] {
-	border-radius: 17px;
-	border: 1px solid #c8c8c8;
-	margin: 0 0 10px;
-	width: 80%;
-	height: 8%;
-	text-align: center;
-	background: #F8F8F8;
-}
+
+
 
 
 

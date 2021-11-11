@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\AsignacionAGController;
+use App\Http\Controllers\LoginController;
 
 
 use App\Http\Controllers\AsignacionDMGController;
@@ -14,16 +15,6 @@ use App\Http\Controllers\TeacherGradeController;
 use App\Http\Controllers\NotasController;
 use App\Http\Controllers\NotasPruebaSaberController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 
 Route::get('/', function () {
@@ -113,7 +104,26 @@ Route::resource('notas',NotasController::class);
 Route::resource('teachergrade',TeacherGradeController::class);
 Route::resource('asginacionDMG',AsignacionDMGController::class);
 
+//login
+Route::resource('login',LoginController::class);
+Route::get('logout',[LoginController::class,'destroy'])->name('login.destroy');
 
+Route::get('/admin', function () {
+    return view('admin.index');
+});
+Route::get('/docente', function () {
+    return view('teacher.mostrar');
+});
+Route::get('/profesorAsignado', function () {
+    return view('teacher.teacher-grade.index');
+});
+
+
+
+
+
+
+//ya
 Route::resource('asginacionAG',AsignacionAGController::class);//listo
 Route::resource('estudiante',EstudianteController::class);//listo
 Route::resource('profesor',ProfesorController::class);//listo

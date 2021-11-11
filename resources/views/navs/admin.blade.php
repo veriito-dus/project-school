@@ -5,8 +5,8 @@
     <div class="header_content d-flex flex-row align-items-center">
       <div class="logo_container">
         <div class="logo">
-          <!-- <img src="img/logo.png" alt=""> -->
-          <h2>logo</h2>
+          <img src="img/icono.ico" width="80" alt="">
+          <!-- <h2>logo</h2> -->
           <!-- <span>course</span> -->
         </div>
       </div>
@@ -20,7 +20,9 @@
             <li class="main_nav_item"><a href="{{url('/profesor')}}"><i class="fas fa-user-tie"></i>Docentes</a></li>
             <li class="main_nav_item"><a href="{{url('/grado')}}"><i class="fas fa-chalkboard-teacher"></i>Grados</a></li>
 
-            <li class="main_nav_item"><a href="{{url('/index-teacher-grade')}}"> <img src="img/icono.ico"></a></li>
+            <li class="main_nav_item">
+              <a href="{{route('login.destroy')}}">{{auth()->user()->name}} <i class="fas fa-sign-out-alt" style="font-size: 20px;"></i></a>
+            </li>
           </ul>
         </div>
       </nav>

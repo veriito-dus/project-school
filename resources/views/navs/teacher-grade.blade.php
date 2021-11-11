@@ -5,9 +5,7 @@
     <div class="header_content d-flex flex-row align-items-center">
       <div class="logo_container">
         <div class="logo">
-          <!-- <img src="img/logo.png" alt=""> -->
-          <h2>logo</h2>
-          <!-- <span>course</span> -->
+          <img src="img/icono.ico" width="80" alt="">
         </div>
       </div>
       <nav class="main_nav_container">
@@ -19,7 +17,9 @@
             <li class="main_nav_item"><a href="{{url('/notesabergrade')}}"><i class="fas fa-chart-pie"></i>Prueba saber</a></li>
             <li class="main_nav_item"><a href="{{url('/notesgrade')}}"><i class="fab fa-leanpub"></i>Consolidado</a></li>
 
-            <li class="main_nav_item"><a href="{{url('/index-teacher-grade')}}"> <img src="img/icono.ico"></a></li>
+            <li class="main_nav_item">
+              <a href="{{route('login.destroy')}}">{{auth()->user()->name}} <i class="fas fa-sign-out-alt" style="font-size: 20px;"></i></a>
+            </li>
           </ul>
         </div>
       </nav>
