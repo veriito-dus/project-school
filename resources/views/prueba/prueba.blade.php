@@ -14,100 +14,16 @@
   <title>AsignacionDGM</title>
 </head>
 
-<body style="background-image:url(img/fondo_n.jpg)">
-  @extends('navs.admin')
+<body style="background:pink">
   <div class="containerTablaFiltro align-items-center justify-content-center">
-    <h1 class="tituloGrado">ASIGNACION PROFESOR - GRADO - MATERIA</h1>
-    <form action="{{url('/asginacionDMG')}}" method="post" style="text-align:center">
-      @csrf
-      <div class="row" style="margin:0 auto;text-align:center;margin-left:100px">
-        <div class="col-lg-5 adminag_box_col">
-          <div class="adminag_filtro">
-            <h2 class="adminag_box_title">Profesor</h2>
-            <select name="Profesor_id" id="Profesor_id">
-              <option selected class="form-control">--seleccione un Profesor--</option>
-              @foreach($profesores as $profesore)
-              <option value="{{ $profesore->id }}">{{ $profesore->Nombre }} {{ $profesore->Apellido }}</option>
-              @endforeach
-            </select>
-            <!-- <input type="password" placeholder="Texto" required="" id="Contraseña" /> -->
-          </div>
-        </div>
-
-        <div class="col-lg-5 adminag_box_col">
-          <div class="adminag_filtro">
-            <h2 class="adminag_box_title">Grado</h2>
-            <select name="Grado_id" id="Grado_id">
-              <option selected class="form-control">--seleccione un grado--</option>
-              @foreach($grados as $grade)
-              <option value="{{ $grade->id }}">{{ $grade->Grade }}</option>
-              @endforeach
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="row" style="margin:0 auto;text-align:center;margin-left:100px">
-        <div class="col-lg-5 adminag_box_col">
-          <div class="adminag_filtro">
-            <h2 class="adminag_box_title">Materia</h2>
-            <select name="Materia_id" id="Materia_id">
-              <option selected class="form-control">--seleccione un Materia--</option>
-              @foreach($materias as $materia)
-              <option value="{{ $materia->id }}">{{ $materia->Name }}</option>
-              @endforeach
-            </select>
-            <!-- <input type="password" placeholder="Texto" required="" id="Contraseña" /> -->
-          </div>
-        </div>
-
-        <div class="col-lg-2 offset-md-2 adminag_box_col">
-          <div class="adminag_filtro" style="margin-top: 35px;margin-left:-70px">
-            <div class="filtroBoton">
-              <input type="submit" value="Agregar">
-            </div>
-          </div>
-        </div>
-      </div>
+    <form action="/operacion" method="post" style="text-align:center">
+      <h2 class="title_filtro">uno</h2>
+      <input type="number" placeholder="Digite el numero 1" name="Numero_uno" id="Numero_uno" />
+      <h2 class="title_filtro">dos</h2>
+      <input type="number" placeholder="Digite el numero 2" name="Numero_dos" id="Numero_dos" />
+    <button type="submit">Sumar</button>
     </form>
-    <div class="tablaGrado">
-      <div class="diseñoTablaGrado">
-        <table class="table" id="prueba" style="padding-right: 20px;">
-          <thead>
-            <tr class="principal">
-              <th>Profesor</th>
-              <th>Grado</th>
-              <th>Materia</th>
-              <th>eliminar</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($asignacionDMG as $asignacionDMG)
-            <tr>
-              <td>{{ $asignacionDMG->profesor->Nombre }} {{ $asignacionDMG->profesor->Apellido }}</td>
-              <td>{{ $asignacionDMG->grade->Grade }}</td>
-              <td>{{ $asignacionDMG->materia->Name }}</td>
-              <td>
-                <form action="{{url('/asginacionDMG/'.$asignacionDMG->id)}}" method="post">
-                  @csrf
-                  {{method_field('DELETE')}}
-                  <input type="submit" class="botonEliminar" onclick="return confirm('¿Desea borrar esta asignacion ?')" value="Eliminar">
-                </form>
-              </td>
-            </tr>
-            @endforeach
-          </tbody>
-        </table>
-      </div>
-    </div>
   </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-  <script>
-    $('#prueba').DataTable();
-  </script>
 </body>
 
 </html>

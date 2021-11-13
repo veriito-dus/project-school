@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\ProfesorController;
@@ -112,7 +113,7 @@ Route::get('/admin', function () {
     return view('admin.index');
 });
 Route::get('/docente', function () {
-    return view('teacher.mostrar');
+    return view('teacher.index');
 });
 Route::get('/profesorAsignado', function () {
     return view('teacher.teacher-grade.index');
@@ -130,3 +131,13 @@ Route::resource('profesor',ProfesorController::class);//listo
 Route::resource('materia',MateriaController::class);//listo
 Route::resource('grado',GradeController::class); //listo
 
+//prueba
+
+Route::post('/operacion', function (HttpRequest $request){
+    $operaciones=$request->Numero_uno+$request->Numero_dos;
+    $request->offsetSet('operacion', $operaciones);
+    // return view('prueba.resultado',['operacion'=>$request->$operaciones]);
+    // return view('prueba.resultado',['operacion'=>$request->$operaciones]);
+    return view('prueba.resultado', compact('operaciones'));
+
+});
