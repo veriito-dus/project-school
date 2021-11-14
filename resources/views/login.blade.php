@@ -15,24 +15,27 @@
         <form action="{{url('/login')}}" method="POST">
           @csrf
           <h1>Inicia Sesión</h1>
+
           <div class="information">
             <i class="fas fa-user"> Usuario</i>
-            <input type="email" name="email" id="email" placeholder="Digite su Usuario" style="margin-left:20px" />
+            <input type="email" name="email" id="email" autofocus required placeholder="Digite su Usuario" style="margin-left:20px" />
           </div>
           <div class="information">
             <i class="fas fa-unlock-alt"> Contraseña</i>
-            <input type="password" name="password" id="password" placeholder="Digite su Contraseña" />
+            <input type="password" name="password" id="password" required placeholder="Digite su Contraseña" />
           </div>
           <div class="containeragregar">
             <input type="submit" class="agregar" value="Ingresar">
           </div>
-          <!-- <div>
-            <a href="#">Lost your password?</a>
-            <a href="#">Register</a>
-            </div> -->
         </form>
       </div>
       <div class="right">
+        @error('message')
+        <div class="error">
+          <i class="fas fa-exclamation-circle"> </i>
+          <p> {{$message}}</p>
+        </div>
+        @enderror
       </div>
     </section>
   </div>
@@ -64,5 +67,25 @@
 
   .containeragregar {
     margin-top: 40px;
+  }
+
+  .error {
+    border: 2px solid rgba(220, 38, 38);
+    padding: 10px;
+    background-color: #fce3e0af;
+    border-radius: 10px;
+    width: 70%;
+    margin: auto;
+    color: black;
+    margin-top: 35%;
+  }
+
+  .error i {
+    color: rgba(220, 38, 38);
+    font-size: 40px;
+    margin: 0;
+  }
+  .error p {
+    color: rgba(220, 38, 38);
   }
 </style>

@@ -30,7 +30,7 @@ class LoginController extends Controller
                             'password'])) == false) {
             return back()->withErrors([
             //mensaje de que retorna al ser incorrecta
-                'message' => 'el usuario o la contraseña son incorrectas, intentelo de nuevo'
+                'message' => 'Datos incorrectos, intentelo de nuevo'
             ]);
         };
         //Segun el rol que se obtenga se direcciona a una vista
