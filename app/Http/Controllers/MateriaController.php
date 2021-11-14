@@ -15,55 +15,66 @@ use Illuminate\Http\Request;
 class MateriaController extends Controller
 {
     /**
-     * Enlista las materias que se tiene en la base de datos y los muestra en la vista materia-admin
+     * Enlista las materias existentes para mostrarlos en vista asignada.
      */
     public function index()
     {
+        //Esta variable guardara los datos de su respectivo modelo.
         $materias = Materia::all();
-        return view('admin.materia-admin', Compact('materias'));
+        //Asigna la vista a mostrar con la variable declarada anteriormente.
+        return view('admin.materia-admin',
+                    Compact('materias'));
     }
 
     /**
-     * Agrega los datos que vienen de la vista materia-admin en la tabla correspondiente de la base de datos
-     * exceptuando el token, después de guardar esos datos se redirecciona a la vista materia-admin
+     * Agrega los datos obtenidos a su respectiva tabla en la base de datos.
      */
     public function store(Request $request)
     {
-        $datosMateria = request()->except('_token');
+        //La variable datosMateria guardara los datos obtenidos menos el token.
+        $datosMateria = request()
+                        ->except('_token');
+        //En el modelo se insertaran los datos de la variable datosMateria.
         Materia::insert($datosMateria);
+        //Se hara su redireccionamiento al index de este controlador.
         return redirect('materia');
     }
 
 
     /**
-     * Enlista los datos de la materia del identificador de la vista materia-admin
-     * para mostrarlos en la misma vistas pero en un modal
+     * Muestra la vista donde se editaran los datos
      */
     public function edit($id)
     {
         $materia = Materia::findOrFail($id);
-        return view('admin.materia-admin', compact('materia'));
+        //Asigna la vista a mostrar con la variable declarada anteriormente.
+        return view('admin.materia-admin',
+                compact('materia'));
     }
 
     /**
-     * Modifica los datos que vienen de la vista materia-admin en su respectiva tabla en la
-     * base de datos de acuerdo a su identificador, exceptuando el token y el método los cuales
-     * son dados en esta vista, luego hace un redireccionamiento a la vista materia-admin
+     * Modifica los datos obtenidos a su respectiva tabla en la base de datos.
      */
     public function update($id)
     {
-        $datosMateria = request()->except(['_token', '_method']);
-        Materia::where('id', '=', $id)->update($datosMateria);
+        //la variable datosMateria guardara los datos obtenidos menos el token y el metodo.
+        $datosMateria = request()
+                        ->except(['_token', '_method']);
+        //en el modelo se modificaran los datos de la variable datosMateria teniendo en cuenta su id
+        Materia::where('id', '=', $id)
+                        ->update($datosMateria);
+        //se hara su redireccionamiento al index de este controlador
         return redirect('materia');
     }
 
     /**
-     * Elimina el campo seleccionado en la vista materia-admin, utilizando su identificador correspondiente
-     * en la tabla de la base de datos, luego se redirecciona a la vista materia-admin
+     * Elimina los datos en su respectiva tabla en la base de datos.
      */
     public function destroy($id)
     {
+        //En el modelo se eliminara los datos que contenga el identificardor determinado.
         Materia::destroy($id);
+        //Se hara su redireccionamiento al index de este controlador.
         return redirect('materia');
     }
 }

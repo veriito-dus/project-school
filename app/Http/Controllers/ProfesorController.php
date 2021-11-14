@@ -19,85 +19,103 @@ use Illuminate\Support\Facades\Storage;
 class ProfesorController extends Controller
 {
     /**
-     * Enlista los profesor que se tiene en la base de datos y
-     * los muestra en la vista teacher-admin
+     * Enlista los estudiantes existentes para mostrarlos en vista asignada.
      */
     public function index()
     {
+        //Esta variable guardara los datos de su respectivo modelo.
         $profesores = Profesor::all();
-        return view('admin.teachers.teacher-admin', compact('profesores'));
+        //Asigna la vista a mostrar con la variable declarada anteriormente.
+        return view('admin.teachers.teacher-admin', 
+                    compact('profesores'));
     }
 
     /**
-     * Enlista los grados que se tiene en la base de datos y
-     * los muestra en la vista add de los profesores en el administrador
+     * Muestra la vista donde se agregaran los datos
      */
     public function create()
     {
+        //Estas variables guardaran los datos de su respectivo modelo.
         $grados = Grade::all();
         $usuarios = User::all();
-        return view('admin.teachers.add', compact('grados','usuarios'));
+        //Asigna la vista a mostrar con las variables declaradas anteriormente.
+        return view('admin.teachers.add',
+                    compact('grados','usuarios'));
     }
 
     /**
-     * Agrega los datos que vienen de la vista add de los profesores en el administrador
-     * en la tabla correspondiente de la base de datos exceptuando el token,
-     * también contiene una condición que hace el cambio de tipo de archivo de imagen,
-     * luego de esto guarda la imagen en este proyecto en
-     * storage/app/public/uploadsProfesores para después guardar esos
-     * datos y se redirecciona a la vista teacher-admin
+     * Agrega los datos obtenidos a su respectiva tabla en la base de datos.
      */
     public function store(Request $request)
     {
-        $datosProfesor = request()->except('_token');
+        //La variable datosProfesor guardara los datos obtenidos menos el token.
+        $datosProfesor = request()
+                        ->except('_token');
+        //verificacion de la existencia del campo Foto.
         if ($request->hasFile('Foto')) {
-            $datosProfesor['Foto'] = $request->file('Foto')->store('uploadsProfesores', 'public');
+        //al encontrar su existencia se guardara en storage/app/public/uploadsProfesores.
+            $datosProfesor['Foto'] 
+                            = $request
+                            ->file('Foto')
+                            ->store('uploadsProfesores', 'public');
         }
+        //En el modelo se insertaran los datos de la variable datosProfesor.
         Profesor::insert($datosProfesor);
+        //Se hara su redireccionamiento al index de este controlador.
         return redirect('profesor');
     }
 
     /**
-     * Enlista los datos de sobre los profesores y los grados desde la base de
-     * datos y se muestran el vista edit de los profesores en el administrador
+     * Muestra la vista donde se editaran los datos
      */
     public function edit($id)
     {
+        //Estas variables guardaran los datos de su respectivo modelo.
         $profesor = Profesor::findOrFail($id);
         $grados = Grade::all();
-        return view('admin.teachers.edit', compact('profesor', 'grados'));
+        //Asigna la vista a mostrar con las variables declaradas anteriormente.
+        return view('admin.teachers.edit',
+                    compact('profesor', 'grados'));
     }
 
     /**
-     * Modifica los datos que vienen de la vista teacher-admin en su respectiva
-     * tabla en la base de datos de acuerdo a su identificador, exceptuando el token
-     * y el método, también contiene una condición para borrar del sistema la foto
-     * existente si se hace una modificación de esta, luego hace un
-     * redireccionamiento a la vista teacher-admin
+     * Modifica los datos obtenidos a su respectiva tabla en la base de datos.
      */
     public function update(Request $request, $id)
     {
-        $datosProfesor = request()->except(['_token', '_method']);
+        //la variable datosEstudiante guardara los datos obtenidos menos el token y el metodo.
+        $datosProfesor = request()
+                        ->except(['_token', '_method']);
+        //verificacion de la existencia del campo Foto.
         if ($request->hasFile('Foto')) {
             $estudiante = Profesor::findOrFail($id);
+        //Elimina esta imagen desde donde esta guardada.
             Storage::delete('public/' . $estudiante->Foto);
-            $datosProfesor['Foto'] = $request->file('Foto')->store('uploadsProfesores', 'public');
+        //Guarda tanto en la variable datosEstudiante como en el Storage el dato nuevo.
+            $datosProfesor['Foto']
+                        = $request
+                        ->file('Foto')
+                        ->store('uploadsProfesores', 'public');
         }
-        Profesor::where('id', '=', $id)->update($datosProfesor);
+        //En el modelo se modificaran los datos de la variable datosEstudiante teniendo en cuenta su id.
+        Profesor::where('id', '=', $id)
+                    ->update($datosProfesor);
+        //se hara su redireccionamiento al index de este controlador.
         return redirect('profesor');
     }
 
     /**
-     * Elimina el campo seleccionado en la vista teacher-admin, utilizando su
-     * identificador correspondiente, también elimina la imagen del sistema,
-     * luego se redirecciona a la vista teacher-admin
+     * Elimina los datos en su respectiva tabla en la base de datos
      */
     public function destroy($id)
     {
         $profesor = Profesor::findOrFail($id);
+        //verificacion al elimina la imagen desde donde esta guardada.
         if (Storage::delete('public/' . $profesor->Foto)) {
+        //en el modelo se eliminara los datos que contenga el identificardor determinado.
             Profesor::destroy($id);
         }
+        //se hara su redireccionamiento al index de este controlador.
         return redirect('profesor');
     }
 }

@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 
 /**
  * Controlador Asignacion alumno - grado
- * Procesos que se realizaran sobre los las asignaciones entre alumnos y grados de la institución
+ * Procesos que se realizaran sobre las asignaciones entre alumnos
+ * y grados de la institución
  * 
  * @author    Veronica Lisseth Dussan Parra
  * @since     09 de noviembre del 2021
@@ -18,47 +19,57 @@ use Illuminate\Http\Request;
 class AsignacionAGController extends Controller
 {
     /**
-     * Enlista las los estudiantes, los grados y las asignaciones que se tiene en la base de datos
-     * y los muestra en la vista asignacion-ag
+     * Enlista los estudiantes, los grados y las asignaciones
+     * para mostrarlos en vista asignada
      */
     public function index()
     {
-        $asignacionAG = AsignacionAG::all();
+        //estas variables guardaran los datos de su respectivo modelo
+        $asignacionAG = AsignacionAG::all(); 
         $estudiantes = Estudiante::all();
         $grados = Grade::all();
-        return view('admin.asignacion-ag', compact('estudiantes', 'grados', 'asignacionAG'));
+        //asigna la vista a mostrar con la variables declaradas anteriormente
+        return view('admin.asignacion-ag',
+                    compact('estudiantes','grados','asignacionAG'));
     }
 
     /**
-     * Agrega los datos que vienen de la vista asignacion-ag en la tabla correspondiente de la base de datos
-     * exceptuando el token, después de guardar esos datos se redirecciona a la vista asignacion-ag
+     * Agrega los datos obtenidos a su respectiva tabla en la base de datos
      */
     public function store(Request $request)
     {
-        $datosasignacionAG = request()->except('_token');
+        //la variable datosasignacionAG guardara los datos obtenidos menos el token
+        $datosasignacionAG = request()
+                            ->except('_token');
+        //en el modelo se insertaran los datos de la variable datosasignacionAG
         AsignacionAG::insert($datosasignacionAG);
+        //se hara su redireccionamiento al index de este controlador
         return redirect('asginacionAG');
     }
 
     /**
-     * Modifica los datos que vienen de la vista asignacion-ag en su respectiva tabla en la
-     * base de datos de acuerdo a su identificador, exceptuando el token y el método los cuales
-     * son dados en esta vista, luego hace un redireccionamiento a la vista asignacion-ag
+     * Modifica los datos obtenidos a su respectiva tabla en la base de datos
      */
     public function update($id)
     {
-        $datosAsignacionAG = request()->except(['_token', '_method']);
-        AsignacionAG::where('id', '=', $id)->update($datosAsignacionAG);
+        //la variable datosasignacionAG guardara los datos obtenidos menos el token y el metodo
+        $datosAsignacionAG = request()
+                            ->except(['_token','_method']);
+        //en el modelo se modificaran los datos de la variable datosasignacionAG teniendo en cuenta su id
+        AsignacionAG::where('id','=', $id)
+                            ->update($datosAsignacionAG);
+        //se hara su redireccionamiento al index de este controlador
         return redirect('asginacionAG');
     }
 
     /**
-     * Elimina el campo seleccionado en la vista asignacion-ag, utilizando su identificador correspondiente
-     * en la tabla de la base de datos, luego se redirecciona a la vista asignacion-ag
+     * Elimina los datos en su respectiva tabla en la base de datos
      */
     public function destroy($id)
     {
+        //en el modelo se eliminara los datos que contenga el identificardor determinado
         AsignacionAG::destroy($id);
+        //se hara su redireccionamiento al index de este controlador
         return redirect('asginacionAG');
     }
 }

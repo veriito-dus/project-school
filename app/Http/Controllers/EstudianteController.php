@@ -17,18 +17,19 @@ use Illuminate\Support\Facades\Storage;
 class EstudianteController extends Controller
 {
     /**
-     * Enlista los estudiantes que se tiene en la base de datos y
-     * los muestra en la vista alumnos-admin
+     * Enlista los estudiantes existentes para mostrarlos en vista asignada.
      */
     public function index()
     {
+        //Esta variable guardara los datos de su respectivo modelo.
         $estudiantes = Estudiante::all();
-        return view('admin.alumnos.alumnos-admin', compact('estudiantes'));
+        //Asigna la vista a mostrar con la variable declarada anteriormente.
+        return view('admin.alumnos.alumnos-admin',
+                    compact('estudiantes'));
     }
 
     /**
-     * Enlista los grados que se tiene en la base de datos y
-     * los muestra en la vista add de los alumnos en el administrador
+     * Muestra la vista donde se agregaran los datos
      */
     public function create()
     {
@@ -36,63 +37,76 @@ class EstudianteController extends Controller
     }
 
     /**
-     * Agrega los datos que vienen de la vista add de los alumnos en el administrador
-     * en la tabla correspondiente de la base de datos exceptuando el token,
-     * también contiene una condición que hace el cambio de tipo de archivo de imagen,
-     * luego de esto guarda la imagen en este proyecto en
-     * storage/app/public/uploadsEstudiantes para después guardar esos
-     * datos y se redirecciona a la vista alumnos-admin
+     * Agrega los datos obtenidos a su respectiva tabla en la base de datos.
      */
     public function store(Request $request)
     {
-        $datosEstudiante = request()->except('_token');
+        //La variable datosEstudiante guardara los datos obtenidos menos el token.
+        $datosEstudiante = request()
+                        ->except('_token');
+        //verificacion de la existencia del campo Foto.
         if ($request->hasFile('Foto')) {
-            $datosEstudiante['Foto'] = $request->file('Foto')->store('uploadsEstudiantes', 'public');
+        //al encontrar su existencia se guardara en storage/app/public/uploadsEstudiantes.
+            $datosEstudiante['Foto'] 
+                            = $request
+                            ->file('Foto')
+                            ->store('uploadsEstudiantes', 'public');
         }
+        //En el modelo se insertaran los datos de la variable datosEstudiante.
         Estudiante::insert($datosEstudiante);
+        //Se hara su redireccionamiento al index de este controlador.
         return redirect('estudiante');
     }
 
     /**
-     * Enlista los datos de sobre los estudiantes y los grados desde la base de
-     * datos y se muestran el vista edit de los alumnos en el administrador
+     * Muestra la vista donde se editaran los datos
      */
     public function edit($id)
     {
         $estudiante = Estudiante::findOrFail($id);
-        return view('admin.alumnos.edit', compact('estudiante'));
+        //Asigna la vista a mostrar con la variable declarada anteriormente.
+        return view('admin.alumnos.edit',
+                    compact('estudiante'));
     }
 
     /**
-     * Modifica los datos que vienen de la vista alumnos-admin en su respectiva
-     * tabla en la base de datos de acuerdo a su identificador, exceptuando el token
-     * y el método, también contiene una condición para borrar del sistema la foto
-     * existente si se hace una modificación de esta, luego hace un
-     * redireccionamiento a la vista alumnos-admin
+     * Modifica los datos obtenidos a su respectiva tabla en la base de datos.
      */
     public function update(Request $request, $id)
     {
-        $datosEstudiante = request()->except(['_token', '_method']);
+        //la variable datosEstudiante guardara los datos obtenidos menos el token y el metodo.
+        $datosEstudiante = request()
+                        ->except(['_token', '_method']);
+        //verificacion de la existencia del campo Foto.
         if ($request->hasFile('Foto')) {
             $estudiante = Estudiante::findOrFail($id);
+        //Elimina esta imagen desde donde esta guardada.
             Storage::delete('public/' . $estudiante->Foto);
-            $datosEstudiante['Foto'] = $request->file('Foto')->store('uploadsEstudiantes', 'public');
+        //Guarda tanto en la variable datosEstudiante como en el Storage el dato nuevo.
+            $datosEstudiante['Foto']
+                            = $request
+                            ->file('Foto')
+                            ->store('uploadsEstudiantes', 'public');
         }
-        Estudiante::where('id', '=', $id)->update($datosEstudiante);
+        //En el modelo se modificaran los datos de la variable datosEstudiante teniendo en cuenta su id.
+        Estudiante::where('id', '=', $id)
+                        ->update($datosEstudiante);
+        //se hara su redireccionamiento al index de este controlador.
         return redirect('estudiante');
     }
 
     /**
-     * Elimina el campo seleccionado en la vista alumnos-admin, utilizando su
-     * identificador correspondiente, también elimina la imagen del sistema,
-     * luego se redirecciona a la vista alumnos-admin
+     * Elimina los datos en su respectiva tabla en la base de datos
      */
     public function destroy($id)
     {
         $estudiante = Estudiante::findOrFail($id);
+        //verificacion al elimina la imagen desde donde esta guardada.
         if (Storage::delete('public/' . $estudiante->Foto)) {
+        //en el modelo se eliminara los datos que contenga el identificardor determinado
             Estudiante::destroy($id);
         }
+        //se hara su redireccionamiento al index de este controlador
         return redirect('estudiante');
     }
 }

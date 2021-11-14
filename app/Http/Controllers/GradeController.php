@@ -15,39 +15,39 @@ use Illuminate\Http\Request;
 class GradeController extends Controller
 {
     /**
-     * Enlista los grados que se tiene en la base de datos y
-     * los muestra en la vista grades-admin
+     * Enlista los estudiantes existentes para mostrarlos en vista asignada.
      */
     public function index()
     {
+        //Esta variable guardara los datos de su respectivo modelo.
         $grados=Grade::all();
-        // return view('prueba.prueba',$datos);
-        return view('admin.grades-admin',compact('grados'));
-        // return view('prueba.prueba',compact('grados'));
+        //Asigna la vista a mostrar con la variable declarada anteriormente.
+        return view('admin.grades-admin',
+                    compact('grados'));
     }
 
     /**
-     * Agrega los datos que vienen de la vista grades-admin en la tabla correspondiente de la base de datos
-     * exceptuando el token, después de guardar esos datos se redireccióna a la vista grades-admin
+     * Agrega los datos obtenidos a su respectiva tabla en la base de datos.
      */
     public function store(Request $request)
     {
-        // $datosEmpleado=request()->all();
-        $datosGrado=request()->except('_token');
-        // hacer el cambio de tipo de archivo, la carpeta uploadempleado es variable
+        //la variable datosGrado guardara los datos obtenidos menos el token
+        $datosGrado=request()
+                    ->except('_token');
+        //en el modelo se insertaran los datos de la variable datosGrado
         Grade::insert($datosGrado);
-        // return response()->json($datosEmpleado);
+        //se hara su redireccionamiento al index de este controlador
         return redirect('grado');
     }
 
     /**
-     * Elimina el campo seleccionado en la vista grades-admin, utilizando su identificador correspondiente
-     * en la tabla de la base de datos, luego se redirecciona a la vista grades-admin
+     * Elimina los datos en su respectiva tabla en la base de datos.
      */
     public function destroy($id)
     {
-        // $empleado=Grade::findOrFail($id);
+        //en el modelo se eliminara los datos que contenga el identificardr determinado.
         Grade::destroy($id);
+        //se hara su redireccionamiento al index de este controlador.
         return redirect('grado');
     }
 }

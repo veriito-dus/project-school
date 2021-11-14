@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\login;
-use Illuminate\Http\Request;
-
+/**
+* Controlador Login
+* Procesos que se realizaran al momento de realizar el login
+* 
+* @author    Veronica Lisseth Dussan Parra
+* @since     11 de noviembre del 2021
+*/
 class LoginController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * muestra la vista login.
      */
     public function index()
     {
@@ -18,19 +20,20 @@ class LoginController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Verificacion del login.
      */
     public function store()
     {
-        //iniciar session
-        if (auth()->attempt(request(['email', 'password'])) == false) {
+        //Verificacion de la existencia de los datos requeridos.
+        if (auth()
+            ->attempt(request(['email',
+                            'password'])) == false) {
             return back()->withErrors([
+            //mensaje de que retorna al ser incorrecta
                 'message' => 'el usuario o la contraseña son incorrectas, intentelo de nuevo'
             ]);
         };
+        //Segun el rol que se obtenga se direcciona a una vista
         if (auth()->user()->rol_id == '1') {
             return redirect()->to('/admin');
         } elseif (auth()->user()->rol_id == '2') {
@@ -41,10 +44,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\login  $login
-     * @return \Illuminate\Http\Response
+     * Cerrar sesion del login.
      */
     public function destroy()
     {
